@@ -116,4 +116,13 @@ body {
   #wedding-section-date {
     font-size: 20px;
   }
+
+  #option-info {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .button-info {
+    width: 80%;
+  }
 }

@@ -152,7 +152,7 @@ export default function InformationSection() {
         </video>
 
         <div className="absolute inset-0 flex justify-center items-center z-10">
-          <div className="flex justify-around w-full">
+          <div id="option-info" className="flex justify-around w-full">
             <div className="flex flex-col items-center">
               <div className="max-w-xs px-4">
                 <p className="text-image-info text-white text-lg font-semibold">
@@ -163,7 +163,7 @@ export default function InformationSection() {
                   specimen book.
                 </p>
               </div>
-              <div className="w-full text-center pt-3 mt-auto">
+              <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/rsvp"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
@@ -187,7 +187,7 @@ export default function InformationSection() {
                   specimen book.
                 </p>
               </div>
-              <div className="w-full text-center pt-3 mt-auto">
+              <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/registry"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
