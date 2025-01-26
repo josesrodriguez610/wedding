@@ -140,6 +140,10 @@ export default function InformationSection() {
       <div className="video-container inset-0 z-0">
         <video
           className="video-desktop w-full h-full object-cover hidden lg:block"
+          muted
+          playsInline
+          loop
+          autoPlay
           // src="/movies/mia-and-millie.mp4"
         >
           <source
@@ -150,6 +154,10 @@ export default function InformationSection() {
         </video>
         <video
           className="video-mobile w-full h-full object-cover block lg:hidden"
+          muted
+          playsInline
+          loop
+          autoPlay
           // src="/movies/mia-and-millie-phone-vertical.mp4"
         >
           <source

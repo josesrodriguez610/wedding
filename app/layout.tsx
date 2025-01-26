@@ -4,7 +4,7 @@ import "./globals.css";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Sergio & Ashley Weeding",
+  title: "Sergio & Ashley Wedding",
   description: "Wedding Description",
 };
 
