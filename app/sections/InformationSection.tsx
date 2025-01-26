@@ -138,14 +138,16 @@ export default function InformationSection() {
       <div className="video-container inset-0 z-0">
         <video
           className="video-desktop w-full h-full object-cover hidden lg:block"
-          src="/movies/mia-and-millie.mp4"
+          // src="/movies/mia-and-millie.mp4"
+          src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737902973/mia_and_millie-test3-desktop_ryablh.mp4"
           type="video/mp4"
         >
           Your browser does not support the video tag.
         </video>
         <video
           className="video-mobile w-full h-full object-cover block lg:hidden"
-          src="/movies/mia-and-millie-phone-vertical.mp4"
+          // src="/movies/mia-and-millie-phone-vertical.mp4"
+          src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737903149/mia-and-millie-phone_woiaik.mp4"
           type="video/mp4"
         >
           Your browser does not support the video tag.

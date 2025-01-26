@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 type RSVP = {
   id: number;
@@ -19,12 +20,24 @@ type RSVPConfirmationProps = {
 export default function RSVPConfirmation({
   rsvp,
   partyMembers,
-}: RSVPConfirmationProps) {
+  onSubmit,
+}: {
+  rsvp: RSVP;
+  partyMembers: RSVP[];
+  onSubmit: () => void;
+}) {
+  const router = useRouter(); // For navigation
+
+  const [loading, setLoading] = useState(false);
+
   const [goingStatus, setGoingStatus] = useState<
     Record<number, boolean | null>
   >(() =>
     partyMembers.reduce(
-      (acc, member) => ({ ...acc, [member.id]: null }),
+      (acc, member) => ({
+        ...acc,
+        [member.id]: member.going, // Use 'going' from backend
+      }),
       {} as Record<number, boolean | null>
     )
   );
@@ -82,27 +95,47 @@ export default function RSVPConfirmation({
     }));
   };
 
-  const handleSubmit = () => {
-    // Split names into first and last name before submission
-    const splitNames = Object.entries(nameUpdates).reduce(
-      (acc, [id, fullName]) => {
-        const [firstName = "", ...lastNameParts] = fullName.trim().split(" ");
-        acc[parseInt(id)] = {
-          firstName,
-          lastName: lastNameParts.join(" "),
-        };
-        return acc;
-      },
-      {} as Record<number, { firstName: string; lastName: string }>
-    );
+  const handleSubmit = async () => {
+    setLoading(true);
+    // Merge updated data with existing member data
+    const updatedRSVPs = partyMembers.map((member) => {
+      // Split full name into firstName and lastName if updated
+      const fullName = nameUpdates[member.id];
+      const [firstName, ...lastNameParts] = fullName
+        ? fullName.trim().split(" ")
+        : [member.firstName, member.lastName];
+      const lastName = lastNameParts.join(" ");
 
-    console.log("Form submitted with data:", {
-      goingStatus,
-      emailUpdates,
-      nameUpdates: splitNames,
-      note,
+      return {
+        id: member.id,
+        firstName: firstName || member.firstName, // Use updated or existing data
+        lastName: lastName || member.lastName, // Use updated or existing data
+        email: emailUpdates[member.id] || member.email, // Use updated or existing data
+        going: goingStatus[member.id], // True, false, or null
+        notes: note, // Shared note for the entire party
+        partyId: member.partyId,
+      };
     });
-    // Submit the data to your backend
+
+    console.log("Updated RSVP data for submission:", updatedRSVPs);
+
+    try {
+      const response = await fetch("/api/update-rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedRSVPs),
+      });
+
+      if (response.ok) {
+        onSubmit(); // Transition to the thank-you message
+      } else {
+        console.error("Failed to update RSVP:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error updating RSVP:", error);
+    } finally {
+      setLoading(false); // Set loading to false once the search is complete
+    }
   };
 
   // Ensure the searched user is displayed first
@@ -229,9 +262,11 @@ export default function RSVPConfirmation({
         {/* Submit Button */}
         <button
           onClick={handleSubmit}
-          className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-200 mt-6"
+          className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-200 mt-6 ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </div>
     </div>

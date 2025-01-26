@@ -77,6 +77,7 @@ body {
   line-height: 0.5;
   color: var(--top-text-color);
   /* text-align: right; */
+  line-height: 1.2; /* More standard line height */
   font-family: var(--roboto);
   position: absolute;
   bottom: -13px;
@@ -98,6 +99,11 @@ body {
 #confirmation-component {
   margin-top: 10px;
 }
+
+/* #confirmation-component > div {
+  margin-top: 10px;
+  background-color: var(--top-text-color);
+} */
 
 @media only screen and (max-width: 600px) {
   #text-first {
@@ -128,6 +134,15 @@ body {
 
   .button-info {
     width: 80%;
+  }
+
+  #search-component {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #confirmation-component {
+    margin: 10px;
   }
 
   #search-component {
