@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Case-insensitive search using Prisma
-    const rsvp = await prisma.RSVP.findFirst({
+    const rsvp = await prisma.rSVP.findFirst({
       where: {
         AND: [
           { firstName: { equals: firstName, mode: "insensitive" } },

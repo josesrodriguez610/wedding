@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export default function Registry() {
   return (
     <div className="w-full flex justify-center">

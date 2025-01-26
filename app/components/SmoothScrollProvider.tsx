@@ -1,10 +1,16 @@
 // components/SmoothScrollProvider.js
 "use client";
 
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import Lenis from "lenis";
 
-const SmoothScrollProvider = ({ children }) => {
+interface SmoothScrollProviderProps {
+  children: ReactNode;
+}
+
+const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
+  children,
+}) => {
   useEffect(() => {
     // Initialize Lenis
     const lenis = new Lenis({
@@ -14,7 +20,7 @@ const SmoothScrollProvider = ({ children }) => {
     });
 
     // Animation frame for Lenis
-    const animate = (time) => {
+    const animate = (time: number) => {
       lenis.raf(time);
       requestAnimationFrame(animate);
     };

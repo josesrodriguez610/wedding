@@ -3,14 +3,10 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(
-  req: NextRequest,
-  context: { params: { partyId: string } }
-) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(req: NextRequest, context: { params: any }) {
   try {
-    // Await the resolution of params
-    const params = await context.params;
-    const partyId = params.partyId;
+    const { partyId } = context.params; // Access the dynamic route parameter
 
     if (!partyId) {
       return NextResponse.json(

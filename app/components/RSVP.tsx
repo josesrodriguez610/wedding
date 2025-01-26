@@ -18,7 +18,7 @@ export default function RSVP() {
       {/* Text Section */}
       <div className="flex flex-col items-center sm:items-start justify-center text-center sm:text-left space-y-4 sm:space-y-6 pt-4 sm:px-16">
         <h2 className="text-[18px] sm:text-[24px] text-[var(--top-background)]">
-          We'd like to share a night of dancing, <br />
+          We&#39;d like to share a night of dancing, <br />
           dinner, and drinks with 100 of our
           <br /> closest friends and family.
         </h2>

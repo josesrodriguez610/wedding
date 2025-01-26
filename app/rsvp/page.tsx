@@ -5,23 +5,16 @@ import RSVPSearch from "./components/RSVPSearch";
 import RSVPConfirmation from "./components/RSVPConfirmation";
 import ThankYou from "./components/ThankYou";
 import { useRouter } from "next/navigation";
-
-type RSVP = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  going: boolean;
-  partyId: string;
-};
+import { RSVP } from "../types/rsvp";
 
 export default function Page() {
   const [step, setStep] = useState<"search" | "confirmation" | "thank-you">(
     "search"
   );
-  const [data, setData] = useState<{ rsvp: RSVP; partyMembers: RSVP[] } | null>(
-    null
-  );
+  const [data, setData] = useState<{
+    rsvp: RSVP;
+    partyMembers: RSVP[];
+  } | null>(null);
 
   const router = useRouter();
 
@@ -38,7 +31,7 @@ export default function Page() {
     <>
       {step === "search" && (
         <RSVPSearch
-          onRSVPFound={(data) => {
+          onRSVPFound={(data: { rsvp: RSVP; partyMembers: RSVP[] }) => {
             setData(data);
             setStep("confirmation"); // Move to the confirmation step
           }}

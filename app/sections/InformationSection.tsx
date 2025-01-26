@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Registry from "../components/Registry";
-import RSVP from "../components/RSVP";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,8 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function InformationSection() {
   useEffect(() => {
     // Split the text into words and characters
-    const splitTitle = new SplitType("#wedding-section-title", {
-      types: "words, chars",
+    new SplitType("#wedding-section-title", {
+      types: "words,chars",
     });
 
     // Animation timeline
@@ -83,8 +81,12 @@ export default function InformationSection() {
         // },
         onComplete: () => {
           // Target the visible video based on the viewport
-          const desktopVideo = document.querySelector(".video-desktop");
-          const mobileVideo = document.querySelector(".video-mobile");
+          const desktopVideo = document.querySelector(
+            ".video-desktop"
+          ) as HTMLVideoElement | null;
+          const mobileVideo = document.querySelector(
+            ".video-mobile"
+          ) as HTMLVideoElement | null;
 
           // Check if desktop or mobile video is visible
           const isDesktop = window.innerWidth >= 1024; // Adjust breakpoint if needed
@@ -139,17 +141,21 @@ export default function InformationSection() {
         <video
           className="video-desktop w-full h-full object-cover hidden lg:block"
           // src="/movies/mia-and-millie.mp4"
-          src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737902973/mia_and_millie-test3-desktop_ryablh.mp4"
-          type="video/mp4"
         >
+          <source
+            src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737902973/mia_and_millie-test3-desktop_ryablh.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
         <video
           className="video-mobile w-full h-full object-cover block lg:hidden"
           // src="/movies/mia-and-millie-phone-vertical.mp4"
-          src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737903149/mia-and-millie-phone_woiaik.mp4"
-          type="video/mp4"
         >
+          <source
+            src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737903149/mia-and-millie-phone_woiaik.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
 
@@ -159,7 +165,7 @@ export default function InformationSection() {
               <div className="max-w-xs px-4">
                 <p className="text-image-info text-white text-lg font-semibold">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book.
@@ -183,7 +189,7 @@ export default function InformationSection() {
               <div className="max-w-xs px-4">
                 <p className="text-image-info text-white text-lg font-semibold">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book.

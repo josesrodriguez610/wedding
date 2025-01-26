@@ -1,14 +1,17 @@
 "use client";
 
+import { RSVP } from "@/app/types/rsvp";
 import { useState } from "react";
 
-type RSVP = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  partyId: string;
-};
+// type RSVP = {
+//   id: number;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   going: boolean; // Ensure this is required
+//   partyId: string;
+//   notes: string | null; // Match type with RSVPData
+// };
 
 type RSVPSearchProps = {
   onRSVPFound: (data: { rsvp: RSVP; partyMembers: RSVP[] }) => void; // Pass both RSVP and party members

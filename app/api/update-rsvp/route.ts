@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     // Update each RSVP in the database
-    const updatePromises = updatedRSVPs.map((rsvp: any) =>
+    const updatePromises = updatedRSVPs.map((rsvp) =>
       prisma.rSVP.update({
         where: { id: rsvp.id },
         data: {

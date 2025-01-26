@@ -1,21 +1,7 @@
 "use client";
 
+import { RSVP } from "@/app/types/rsvp";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-
-type RSVP = {
-  id: number;
-  firstName: string | null;
-  lastName: string | null;
-  email: string | null;
-  partyId: string;
-  notes: string | null;
-};
-
-type RSVPConfirmationProps = {
-  rsvp: RSVP; // The RSVP of the current user
-  partyMembers: RSVP[]; // All members of the same party
-};
 
 export default function RSVPConfirmation({
   rsvp,
@@ -26,8 +12,6 @@ export default function RSVPConfirmation({
   partyMembers: RSVP[];
   onSubmit: () => void;
 }) {
-  const router = useRouter(); // For navigation
-
   const [loading, setLoading] = useState(false);
 
   const [goingStatus, setGoingStatus] = useState<

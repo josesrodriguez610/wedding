@@ -5,9 +5,7 @@ import { gsap } from "gsap";
 import { slides } from "../utils/variables";
 
 export default function HeroSection() {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(slides[0]); // Store
-  const [isLastSlide, setIsLastSlide] = useState(false);
   const [scrollIconAnimation, setScrollIconAnimation] = useState(false);
   const [isPhoneView, setIsPhoneView] = useState(false); // Tracks if the viewport is a phone
 
@@ -37,22 +35,20 @@ export default function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlideIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % slides.length;
-        setCurrentSlide(slides[nextIndex]); // Update slide data when index changes
-
-        setIsLastSlide(nextIndex === slides.length - 1);
+      setCurrentSlide((prevSlide) => {
+        const currentIndex = slides.indexOf(prevSlide);
+        const nextIndex = (currentIndex + 1) % slides.length;
 
         if (nextIndex === slides.length - 1 && scrollIconAnimation === false) {
           setScrollIconAnimation(true);
         }
 
-        return nextIndex;
+        return slides[nextIndex]; // Update the current slide
       });
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval); // Cleanup interval on unmount
-  }, []);
+  });
 
   useEffect(() => {
     if (scrollIconAnimation) {
