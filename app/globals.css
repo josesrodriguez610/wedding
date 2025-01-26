@@ -95,6 +95,10 @@ body {
   font-family: var(--font-editorial-new);
 }
 
+#confirmation-component {
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   #text-first {
     font-size: 50px;
@@ -124,5 +128,14 @@ body {
 
   .button-info {
     width: 80%;
+  }
+
+  #search-component {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #confirmation-component {
+    margin: 10px;
   }
 }
