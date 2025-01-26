@@ -118,9 +118,8 @@ body {
 
 @media only screen and (max-width: 600px) {
   #hero-section-container {
-    height: calc(
-      var(--vh) * 100
-    ); /* Use the dynamically calculated viewport height */
+    height: calc(var(--vh) * 100);
+    min-height: calc(var(--vh) * 100);
     display: flex;
     flex-direction: column; /* Ensures proper stacking in mobile view */
   }
