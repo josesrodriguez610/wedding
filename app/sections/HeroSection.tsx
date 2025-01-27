@@ -92,8 +92,12 @@ export default function HeroSection() {
         } w-full h-full`}
       >
         {/* Image Section */}
-        <div className="flex-1 w-full h-1/2 sm:h-full relative">
+        <div
+          id="image-container"
+          className="flex-1 w-full h-1/2 sm:h-full relative"
+        >
           <Image
+            id="image-hero"
             src={image}
             alt="Hero Image"
             fill

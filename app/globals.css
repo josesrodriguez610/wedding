@@ -117,11 +117,24 @@ body {
 } */
 
 @media only screen and (max-width: 600px) {
+  #top-half {
+    align-items: inherit;
+  }
+
   #hero-section-container {
     height: calc(var(--vh) * 100);
     min-height: calc(var(--vh) * 100);
     display: flex;
     flex-direction: column; /* Ensures proper stacking in mobile view */
+  }
+
+  #image-container {
+    background-position: center; /* Centers the image */
+  }
+
+  #image-hero {
+    background-position: center; /* Centers the image */
+    object-position: center; /* Center the image */
   }
 
   #text-first {
