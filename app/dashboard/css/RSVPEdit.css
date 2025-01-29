@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+  .party-card {
+    flex-direction: column;
+  }
+}

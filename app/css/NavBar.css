@@ -78,7 +78,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  background: var(--top-background);
+  background: #1c1819;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   will-change: transform;
   z-index: 1;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { canopee, editorialNew, roboto } from "./fonts";
 import "./globals.css";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
-import NavBar from "./components/NavBar";
+import NavWrapper from "./components/NavWrapper";
 
 export const metadata: Metadata = {
   title: "Sergio & Ashley Wedding",
@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
         className={`${canopee.variable} ${editorialNew.variable} ${roboto.variable} antialiased`}
       >
-        <NavBar />
+        <NavWrapper /> {/* Now it conditionally renders NavBar */}
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

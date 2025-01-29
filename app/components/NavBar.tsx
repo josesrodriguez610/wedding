@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import "../css/NavBar.css";
+import { SignOut } from "./sign-out";
 
 gsap.registerPlugin(CSSRulePlugin);
 
@@ -76,6 +77,9 @@ const NavBar = () => {
     return pathname === path ? "active" : "";
   };
 
+  // 🔹 Check if the current path is under `/dashboard`
+  const isDashboard = pathname.startsWith("/dashboard");
+
   return (
     <>
       <nav className="nav">
@@ -85,6 +89,11 @@ const NavBar = () => {
             <a href="#">The Elite Portfolio</a>
           </p>
         </div> */}
+        {isDashboard && (
+          <div className="sign-out-btn">
+            <SignOut />
+          </div>
+        )}
         <div className="toggle-btn">
           <button
             className={`burger ${isOpen ? "active" : ""}`}
@@ -92,30 +101,63 @@ const NavBar = () => {
           ></button>
         </div>
       </nav>
-
       <div className="overlay">
         <div className="overlay-menu">
-          <div className="menu-item">
-            <p id={getActiveClass("/")} onClick={() => handleNavigation("/")}>
-              HOME
-            </p>
-          </div>
-          <div className="menu-item">
-            <p
-              id={getActiveClass("/rsvp")}
-              onClick={() => handleNavigation("/rsvp")}
-            >
-              RSVP
-            </p>
-          </div>
-          <div className="menu-item">
-            <p
-              id={getActiveClass("/registry")}
-              onClick={() => handleNavigation("/registry")}
-            >
-              REGISTRY
-            </p>
-          </div>
+          {isDashboard ? (
+            <>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/dashboard")}
+                  onClick={() => handleNavigation("/dashboard")}
+                >
+                  DASHBOARD
+                </p>
+              </div>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/dashboard/rsv")}
+                  onClick={() => handleNavigation("/dashboard/rsv")}
+                >
+                  RSVP EDIT
+                </p>
+              </div>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/dashboard/sign-up")}
+                  onClick={() => handleNavigation("/dashboard/sign-up")}
+                >
+                  CREATE USER
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/")}
+                  onClick={() => handleNavigation("/")}
+                >
+                  HOME
+                </p>
+              </div>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/rsvp")}
+                  onClick={() => handleNavigation("/rsvp")}
+                >
+                  RSVP
+                </p>
+              </div>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/registry")}
+                  onClick={() => handleNavigation("/registry")}
+                >
+                  REGISTRY
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
