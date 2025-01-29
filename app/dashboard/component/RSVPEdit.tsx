@@ -47,10 +47,14 @@ export default function RSVPEdit() {
     setIsEditModalOpen(false); // Ensure edit modal stays closed
   };
 
-  // Open Create Party Modal
   const closeCreateModal = () => {
     setIsCreateModalOpen(false);
-    setNewPartyUsers([{ firstName: "", lastName: "", email: "" }]);
+    setNewPartyUsers([{ ...defaultUser }]); // ✅ Resets "going" to null correctly
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+    setEditingParty(null); // ✅ Properly resets the editing state
   };
 
   // Open Edit Party Modal
@@ -62,10 +66,13 @@ export default function RSVPEdit() {
     }
   };
 
-  // Handle user input changes dynamically
   const handleUserChange = (index, field, value, isNewUser = true) => {
     const users = isNewUser ? [...newPartyUsers] : [...editingParty.users];
-    users[index][field] = value;
+
+    // Ensure the user object exists before modifying
+    if (!users[index]) return;
+
+    users[index] = { ...users[index], [field]: value };
 
     if (isNewUser) {
       setNewPartyUsers(users);
@@ -164,6 +171,24 @@ export default function RSVPEdit() {
       .then(setGroups);
   };
 
+  useEffect(() => {
+    if (isEditModalOpen || isCreateModalOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh"; // Prevents background movement
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    };
+  }, [isEditModalOpen, isCreateModalOpen]);
+
   const userFields = [
     { name: "firstName", placeholder: "First Name", type: "text" },
     { name: "lastName", placeholder: "Last Name", type: "text" },
@@ -242,122 +267,36 @@ export default function RSVPEdit() {
       {/* Edit Party Modal */}
       {isEditModalOpen && editingParty && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg">
+          <div
+            className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg flex flex-col"
+            style={{
+              maxHeight: "80vh", // Limit modal height
+              display: "flex",
+            }}
+          >
             <h2 className="text-xl font-bold mb-4 text-gray-100">Edit Party</h2>
-
-            {editingParty.users.map((user, index) => (
-              <div key={index} className="mb-4 flex flex-col gap-2">
-                {/* 🔹 Add Separator Line Between Users 🔹 */}
-                {index > 0 && (
-                  <hr className="border-gray-600 my-4 opacity-50" />
-                )}
-                {userFields.map((field) => (
-                  <div key={field.name} className="mb-2">
-                    {field.name === "going" ? (
-                      <select
-                        className="bg-gray-700 text-white p-2 rounded-lg"
-                        value={
-                          user?.going === null ? "" : user.going.toString()
-                        }
-                        onChange={(e) =>
-                          handleEditUserChange(
-                            index,
-                            "going",
-                            e.target.value === "true"
-                              ? true
-                              : e.target.value === "false"
-                              ? false
-                              : null
-                          )
-                        }
-                      >
-                        <option value="">Not Decided</option>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                      </select>
-                    ) : (
-                      <input
-                        type={field.type}
-                        placeholder={field.placeholder}
-                        className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
-                        value={user[field.name] || ""}
-                        onChange={(e) =>
-                          handleEditUserChange(
-                            index,
-                            field.name,
-                            e.target.value
-                          )
-                        }
-                      />
-                    )}
-                  </div>
-                ))}
-                {/* 🗑️ Delete Button */}
-                <button
-                  className={`bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition ${
-                    editingParty.users.length === 1
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                  }`}
-                  onClick={() => handleDeleteUser(index, user.id)}
-                  disabled={editingParty.users.length === 1}
-                >
-                  🗑️ Remove User
-                </button>
-              </div>
-            ))}
-
-            {/* Add New User Button */}
-            <button
-              className="w-full bg-green-500 hover:bg-green-600 text-white p-2 rounded-lg font-semibold tracking-wide mb-4"
-              onClick={addUserToEditingParty}
+            <div
+              className="overflow-y-auto px-2 flex-grow"
+              style={{ maxHeight: "60vh", paddingRight: "8px" }}
+              onWheel={(e) => e.stopPropagation()} // Stops accidental page scrolling
+              onTouchMove={(e) => e.stopPropagation()} // Ensures mobile scrolling
             >
-              ➕ Add Another User
-            </button>
-
-            <div className="flex justify-between">
-              <button
-                onClick={() => setIsEditModalOpen(false)}
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleUpdateParty}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold"
-              >
-                Update Party
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Create Party Modal */}
-      {isCreateModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg">
-            <h2 className="text-xl font-bold mb-4 text-gray-100">
-              Create New Party
-            </h2>
-
-            {newPartyUsers.map((user, index) => (
-              <div key={index} className="mb-4">
-                {userFields.map((field) => (
-                  <div key={field.name} className="mb-2">
-                    {field.name === "going" ? (
-                      // ✅ Render a dropdown (select) for the "going" field
-                      <div className="flex items-center space-x-4">
-                        <label className="text-white">
-                          {field.placeholder}:
-                        </label>
+              {editingParty.users.map((user, index) => (
+                <div key={index} className="mb-4 flex flex-col gap-2">
+                  {/* 🔹 Add Separator Line Between Users 🔹 */}
+                  {index > 0 && (
+                    <hr className="border-gray-600 my-4 opacity-50" />
+                  )}
+                  {userFields.map((field) => (
+                    <div key={field.name} className="mb-2">
+                      {field.name === "going" ? (
                         <select
                           className="bg-gray-700 text-white p-2 rounded-lg"
                           value={
                             user?.going === null ? "" : user.going.toString()
-                          } // Ensure correct value
+                          }
                           onChange={(e) =>
-                            handleUserChange(
+                            handleEditUserChange(
                               index,
                               "going",
                               e.target.value === "true"
@@ -368,39 +307,154 @@ export default function RSVPEdit() {
                             )
                           }
                         >
-                          <option value="">Not Decided</option>{" "}
-                          {/* Represents `null` */}
-                          <option value="true">Yes</option>{" "}
-                          {/* Represents `true` */}
-                          <option value="false">No</option>{" "}
-                          {/* Represents `false` */}
+                          <option value="">Not Decided</option>
+                          <option value="true">Yes</option>
+                          <option value="false">No</option>
                         </select>
-                      </div>
-                    ) : (
-                      // ✅ Default text input for other fields
-                      <input
-                        type={field.type}
-                        placeholder={field.placeholder}
-                        className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
-                        value={user?.[field.name] || ""} // Ensure safe access
-                        onChange={(e) => {
-                          const selectedValue = e.target.value;
-                          handleUserChange(
-                            index,
-                            "going",
-                            selectedValue === "true"
-                              ? true
-                              : selectedValue === "false"
-                              ? false
-                              : null
-                          );
-                        }}
-                      />
-                    )}
-                  </div>
-                ))}
+                      ) : (
+                        <input
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
+                          value={user[field.name] || ""}
+                          onChange={(e) =>
+                            handleEditUserChange(
+                              index,
+                              field.name,
+                              e.target.value
+                            )
+                          }
+                        />
+                      )}
+                    </div>
+                  ))}
+                  {/* 🗑️ Delete Button */}
+                  <button
+                    className={`bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition ${
+                      editingParty.users.length === 1
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                    }`}
+                    onClick={() => handleDeleteUser(index, user.id)}
+                    disabled={editingParty.users.length === 1}
+                  >
+                    🗑️ Remove User
+                  </button>
+                </div>
+              ))}
+
+              {/* Add New User Button */}
+              <button
+                className="w-full bg-green-500 hover:bg-green-600 text-white p-2 rounded-lg font-semibold tracking-wide mb-4"
+                onClick={addUserToEditingParty}
+              >
+                ➕ Add Another User
+              </button>
+
+              <div className="flex justify-between">
+                <button
+                  onClick={closeEditModal}
+                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpdateParty}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold"
+                >
+                  Update Party
+                </button>
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Create Party Modal */}
+      {isCreateModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div
+            className="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg flex flex-col"
+            style={{
+              maxHeight: "80vh", // Limit modal height
+              display: "flex",
+            }}
+          >
+            <h2 className="text-xl font-bold mb-4 text-gray-100">
+              Create New Party
+            </h2>
+
+            {/* 🟢 Scrollable Content */}
+            <div
+              className="overflow-y-auto px-2 flex-grow"
+              style={{ maxHeight: "60vh", paddingRight: "8px" }}
+              onWheel={(e) => e.stopPropagation()} // Stops accidental page scrolling
+              onTouchMove={(e) => e.stopPropagation()} // Ensures mobile scrolling
+            >
+              {newPartyUsers.map((user, index) => (
+                <div key={index} className="mb-4">
+                  {newPartyUsers.map((user, index) => (
+                    <div key={index} className="mb-4">
+                      {userFields.map((field) => (
+                        <div key={field.name} className="mb-2">
+                          {field.name === "going" ? (
+                            // ✅ Render a dropdown (select) for the "going" field
+                            <div className="flex items-center space-x-4">
+                              <label className="text-white">
+                                {field.placeholder}:
+                              </label>
+                              <select
+                                className="bg-gray-700 text-white p-2 rounded-lg"
+                                value={
+                                  user.going === null
+                                    ? ""
+                                    : user.going.toString()
+                                } // Ensure correct value
+                                onChange={(e) =>
+                                  handleUserChange(
+                                    index,
+                                    "going",
+                                    e.target.value === "true"
+                                      ? true
+                                      : e.target.value === "false"
+                                      ? false
+                                      : null,
+                                    true
+                                  )
+                                }
+                              >
+                                <option value="">Not Decided</option>{" "}
+                                {/* Represents `null` */}
+                                <option value="true">Yes</option>{" "}
+                                {/* Represents `true` */}
+                                <option value="false">No</option>{" "}
+                                {/* Represents `false` */}
+                              </select>
+                            </div>
+                          ) : (
+                            // ✅ Default text input for other fields
+                            <input
+                              type={field.type}
+                              placeholder={field.placeholder}
+                              className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
+                              value={user[field.name] || ""} // Ensure safe access
+                              onChange={(e) =>
+                                handleUserChange(
+                                  index,
+                                  field.name,
+                                  e.target.value,
+                                  true
+                                )
+                              }
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
 
             <button
               onClick={addNewUserField}
