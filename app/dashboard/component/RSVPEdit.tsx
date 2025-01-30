@@ -119,7 +119,10 @@ export default function RSVPEdit() {
   };
 
   const addNewUserField = () => {
-    setNewPartyUsers([...newPartyUsers, { ...defaultUser }]);
+    setNewPartyUsers((prevUsers) => {
+      if (!Array.isArray(prevUsers)) return [{ ...defaultUser }]; // Ensure it's an array
+      return [...prevUsers, { ...defaultUser }]; // Append new user correctly
+    });
   };
 
   // Add a new user to the Edit Party modal
@@ -393,63 +396,57 @@ export default function RSVPEdit() {
             >
               {newPartyUsers.map((user, index) => (
                 <div key={index} className="mb-4">
-                  {newPartyUsers.map((user, index) => (
-                    <div key={index} className="mb-4">
-                      {userFields.map((field) => (
-                        <div key={field.name} className="mb-2">
-                          {field.name === "going" ? (
-                            // ✅ Render a dropdown (select) for the "going" field
-                            <div className="flex items-center space-x-4">
-                              <label className="text-white">
-                                {field.placeholder}:
-                              </label>
-                              <select
-                                className="bg-gray-700 text-white p-2 rounded-lg"
-                                value={
-                                  user.going === null
-                                    ? ""
-                                    : user.going.toString()
-                                } // Ensure correct value
-                                onChange={(e) =>
-                                  handleUserChange(
-                                    index,
-                                    "going",
-                                    e.target.value === "true"
-                                      ? true
-                                      : e.target.value === "false"
-                                      ? false
-                                      : null,
-                                    true
-                                  )
-                                }
-                              >
-                                <option value="">Not Decided</option>{" "}
-                                {/* Represents `null` */}
-                                <option value="true">Yes</option>{" "}
-                                {/* Represents `true` */}
-                                <option value="false">No</option>{" "}
-                                {/* Represents `false` */}
-                              </select>
-                            </div>
-                          ) : (
-                            // ✅ Default text input for other fields
-                            <input
-                              type={field.type}
-                              placeholder={field.placeholder}
-                              className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
-                              value={user[field.name] || ""} // Ensure safe access
-                              onChange={(e) =>
-                                handleUserChange(
-                                  index,
-                                  field.name,
-                                  e.target.value,
-                                  true
-                                )
-                              }
-                            />
-                          )}
+                  {userFields.map((field) => (
+                    <div key={field.name} className="mb-2">
+                      {field.name === "going" ? (
+                        // ✅ Render a dropdown (select) for the "going" field
+                        <div className="flex items-center space-x-4">
+                          <label className="text-white">
+                            {field.placeholder}:
+                          </label>
+                          <select
+                            className="bg-gray-700 text-white p-2 rounded-lg"
+                            value={
+                              user.going === null ? "" : user.going.toString()
+                            } // Ensure correct value
+                            onChange={(e) =>
+                              handleUserChange(
+                                index,
+                                "going",
+                                e.target.value === "true"
+                                  ? true
+                                  : e.target.value === "false"
+                                  ? false
+                                  : null,
+                                true
+                              )
+                            }
+                          >
+                            <option value="">Not Decided</option>{" "}
+                            {/* Represents `null` */}
+                            <option value="true">Yes</option>{" "}
+                            {/* Represents `true` */}
+                            <option value="false">No</option>{" "}
+                            {/* Represents `false` */}
+                          </select>
                         </div>
-                      ))}
+                      ) : (
+                        // ✅ Default text input for other fields
+                        <input
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
+                          value={user[field.name] || ""} // Ensure safe access
+                          onChange={(e) =>
+                            handleUserChange(
+                              index,
+                              field.name,
+                              e.target.value,
+                              true
+                            )
+                          }
+                        />
+                      )}
                     </div>
                   ))}
                 </div>
