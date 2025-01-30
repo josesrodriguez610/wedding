@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Groups, User, EditingParty } from "@/app/types/user";
 
 export default function RSVPEdit() {
-  const defaultUser = {
+  const defaultUser: User = {
     firstName: "",
     lastName: "",
     email: "",
@@ -17,12 +18,12 @@ export default function RSVPEdit() {
     going: null,
   };
 
-  const [groups, setGroups] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [editingParty, setEditingParty] = useState(null);
+  const [editingParty, setEditingParty] = useState<EditingParty | null>(null);
   const [newPartyUsers, setNewPartyUsers] = useState([{ ...defaultUser }]);
+  const [groups, setGroups] = useState<Groups>({});
 
   // Fetch RSVP groups
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function RSVPEdit() {
       .then(setGroups);
   }, []);
 
-  // Filter groups by search term
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const filteredGroups = Object.entries(groups).filter(([partyId, users]) =>
     users.some(
       (user) =>
@@ -58,7 +59,7 @@ export default function RSVPEdit() {
   };
 
   // Open Edit Party Modal
-  const openEditModal = (partyId) => {
+  const openEditModal = (partyId: string) => {
     if (groups[partyId]) {
       setEditingParty({ partyId, users: [...groups[partyId]] });
       setIsEditModalOpen(true);
@@ -66,23 +67,33 @@ export default function RSVPEdit() {
     }
   };
 
-  const handleUserChange = (index, field, value, isNewUser = true) => {
-    const users = isNewUser ? [...newPartyUsers] : [...editingParty.users];
+  const handleUserChange = (
+    index: number,
+    field: keyof User,
+    value: string | boolean | null,
+    isNewUser: boolean = true
+  ) => {
+    const users = isNewUser
+      ? [...newPartyUsers]
+      : [...(editingParty?.users || [])];
 
-    // Ensure the user object exists before modifying
-    if (!users[index]) return;
+    if (!users[index]) return; // Prevent errors if the index is out of bounds
 
     users[index] = { ...users[index], [field]: value };
 
     if (isNewUser) {
       setNewPartyUsers(users);
     } else {
-      setEditingParty({ ...editingParty, users });
+      setEditingParty((prev) => (prev ? { ...prev, users } : prev));
     }
   };
 
   // Handle user input changes dynamically (Edit Party)
-  const handleEditUserChange = (index, field, value) => {
+  const handleEditUserChange = (
+    index: number,
+    field: keyof User,
+    value: string | boolean | null
+  ) => {
     setEditingParty((prevParty) => {
       if (!prevParty) return prevParty;
       const updatedUsers = [...prevParty.users];
@@ -125,12 +136,15 @@ export default function RSVPEdit() {
     });
   };
 
-  // Add a new user to the Edit Party modal
   const addUserToEditingParty = () => {
-    setEditingParty((prev) => ({
-      ...prev,
-      users: [...prev.users, { ...defaultUser }],
-    }));
+    setEditingParty((prev) => {
+      if (!prev) return prev; // Prevents errors if prev is null
+
+      return {
+        ...prev,
+        users: [...prev.users, { ...defaultUser }],
+      };
+    });
   };
 
   // Handle Create Party
@@ -153,11 +167,11 @@ export default function RSVPEdit() {
   };
 
   // 🛑 DELETE User from Party 🛑
-  const handleDeleteUser = async (index, userId) => {
+  const handleDeleteUser = async (index: number, userId?: number) => {
     if (!editingParty) return;
 
     const updatedUsers = [...editingParty.users];
-    const deletedUser = updatedUsers.splice(index, 1); // Remove user from UI
+    updatedUsers.splice(index, 1); // Remove user from the array
 
     setEditingParty({ ...editingParty, users: updatedUsers });
 
@@ -238,15 +252,15 @@ export default function RSVPEdit() {
         )}
         {filteredGroups.map(([partyId, users]) => (
           <div
-            key={partyId}
+            key={String(partyId)}
             className="bg-gray-800 p-6 mt-4 rounded-lg shadow-lg backdrop-blur-md bg-opacity-70 transition-all hover:scale-102 hover:bg-opacity-90"
           >
             <h2 className="text-xl font-semibold text-blue-400">
-              Party ID: {partyId}
+              Party ID: {String(partyId)}
             </h2>
             <p className="text-gray-400">Members:</p>
             <ul className="mt-3 space-y-2">
-              {users.map((user) => (
+              {(Array.isArray(users) ? users : []).map((user) => (
                 <li
                   key={user.id}
                   className="flex justify-between items-center bg-gray-700 p-3 rounded-md"
@@ -259,7 +273,7 @@ export default function RSVPEdit() {
             </ul>
             <button
               className="mt-4 bg-green-500 hover:bg-green-600 transition-colors text-white p-3 rounded-lg font-semibold tracking-wide"
-              onClick={() => openEditModal(partyId)}
+              onClick={() => openEditModal(String(partyId))}
             >
               ✏️ Edit Party
             </button>
@@ -319,11 +333,11 @@ export default function RSVPEdit() {
                           type={field.type}
                           placeholder={field.placeholder}
                           className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
-                          value={user[field.name] || ""}
+                          value={String(user[field.name as keyof User]) || ""}
                           onChange={(e) =>
                             handleEditUserChange(
                               index,
-                              field.name,
+                              field.name as keyof User,
                               e.target.value
                             )
                           }
@@ -436,11 +450,11 @@ export default function RSVPEdit() {
                           type={field.type}
                           placeholder={field.placeholder}
                           className="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-lg"
-                          value={user[field.name] || ""} // Ensure safe access
+                          value={String(user[field.name as keyof User]) || ""}
                           onChange={(e) =>
                             handleUserChange(
                               index,
-                              field.name,
+                              field.name as keyof User,
                               e.target.value,
                               true
                             )

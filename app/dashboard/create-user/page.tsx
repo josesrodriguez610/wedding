@@ -2,12 +2,12 @@ import { signUp } from "@/app/lib/actions";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { redirect } from "next/navigation";
-import Link from "next/link";
+// import Link from "next/link";
 import { auth } from "@/app/lib/auth";
 
 const Page = async () => {
   const session = await auth();
-  if (session) redirect("/dashboard");
+  if (!session) redirect("/sign-in");
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
@@ -27,7 +27,7 @@ const Page = async () => {
             "use server";
             const res = await signUp(formData);
             if (res.success) {
-              redirect("/sign-in");
+              redirect("/dashboard");
             }
           }}
         >
@@ -50,11 +50,11 @@ const Page = async () => {
           </Button>
         </form>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Button asChild variant="link">
             <Link href="/sign-in">Already have an account? Sign in</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import prisma from "@/app/lib/db/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
 // Fetch all RSVP groups
@@ -8,18 +8,23 @@ export async function GET() {
     orderBy: { lastName: "asc" },
   });
 
-  // Group users by partyId
-  const groupedParties = users.reduce((acc, user) => {
-    if (!acc[user.partyId]) acc[user.partyId] = [];
-    acc[user.partyId].push(user);
-    return acc;
-  }, {});
+  // Define the correct type for the accumulator
+  const groupedParties = users.reduce<Record<string, (typeof users)[number][]>>(
+    (acc, user) => {
+      const partyKey = user.partyId ?? "unknown"; // Ensure it's always a string
+
+      if (!acc[partyKey]) acc[partyKey] = [];
+      acc[partyKey].push(user);
+      return acc;
+    },
+    {}
+  );
 
   return NextResponse.json(groupedParties);
 }
 
 // Create a new party or add a user to an existing party
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   const {
     firstName,
     lastName,
@@ -57,7 +62,7 @@ export async function POST(req) {
 }
 
 // Update a user in a party
-export async function PUT(req) {
+export async function PUT(req: NextRequest) {
   const { id, firstName, lastName, email, address, notes, going } =
     await req.json();
   const updatedUser = await prisma.rSVP.update({
@@ -69,7 +74,7 @@ export async function PUT(req) {
 }
 
 // Delete a user
-export async function DELETE(req) {
+export async function DELETE(req: NextRequest) {
   const { id } = await req.json();
   await prisma.rSVP.delete({ where: { id } });
 

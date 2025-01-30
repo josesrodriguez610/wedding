@@ -1,9 +1,10 @@
 import prisma from "@/app/lib/db/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 // Update a user in a party (PUT /api/rsvp/:id)
-export async function PUT(req, { params }) {
-  const { id } = await params; // Get user ID from URL
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function PUT(req: NextRequest, context: { params: any }) {
+  const { id } = await context.params; // Get user ID from URL
   const {
     firstName,
     lastName,
@@ -36,19 +37,23 @@ export async function PUT(req, { params }) {
 
     return NextResponse.json(updatedUser);
   } catch (error) {
+    console.error("Error updating user:", error); // ✅ Log the error for debugging
+
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 }
 
 // Delete a user (DELETE /api/rsvp/:id)
-export async function DELETE(req, { params }) {
-  const { id } = await params; // Get user ID from URL
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function DELETE(req: NextRequest, context: { params: any }) {
+  const { id } = await context.params; // Get user ID from URL
 
   try {
     await prisma.rSVP.delete({ where: { id: Number(id) } });
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error("Error deleting user:", error); // ✅ Log the error for debugging
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 }

@@ -113,18 +113,11 @@ const NavBar = () => {
                   DASHBOARD
                 </p>
               </div>
+
               <div className="menu-item">
                 <p
-                  id={getActiveClass("/dashboard/rsv")}
-                  onClick={() => handleNavigation("/dashboard/rsv")}
-                >
-                  RSVP EDIT
-                </p>
-              </div>
-              <div className="menu-item">
-                <p
-                  id={getActiveClass("/dashboard/sign-up")}
-                  onClick={() => handleNavigation("/dashboard/sign-up")}
+                  id={getActiveClass("/dashboard/create-user")}
+                  onClick={() => handleNavigation("/dashboard/create-user")}
                 >
                   CREATE USER
                 </p>
