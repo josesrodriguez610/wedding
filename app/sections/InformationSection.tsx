@@ -171,48 +171,48 @@ export default function InformationSection() {
           <div id="option-info" className="flex justify-around w-full">
             <div className="flex flex-col items-center">
               <div className="max-w-xs px-4">
-                <p className="text-image-info text-white text-lg font-semibold">
+                {/* <p className="text-image-info text-white text-lg font-semibold">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book.
-                </p>
+                </p> */}
               </div>
               <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/rsvp"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
                 >
-                  <span className="absolute inset-0 w-full h-full transition-transform ease-in-out transition duration-400 ease-out transform translate-x-1 translate-y-1 bg-[var(--top-background)] group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                  <span className="absolute inset-0 w-full h-full bg-[var(--top-text-color)] border-2 border-[var(--top-background)] group-hover:border-[var(--top-text-color)] group-hover:bg-[var(--top-background)]"></span>
-                  <span className="relative text-[var(--top-background)] text-3xl font-bold group-hover:text-[var(--top-text-color)] ease-in-out">
-                    RSVP
-                  </span>
+                  <div className="flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl">
+                      RSVP
+                    </button>
+                  </div>
                 </Link>
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <div className="max-w-xs px-4">
-                <p className="text-image-info text-white text-lg font-semibold">
+                {/* <p className="text-image-info text-white text-lg font-semibold">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book.
-                </p>
+                </p> */}
               </div>
               <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/registry"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
                 >
-                  <span className="absolute inset-0 w-full h-full transition-transform ease-in-out transition duration-400 ease-out transform translate-x-1 translate-y-1 bg-[var(--top-background)] group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                  <span className="absolute inset-0 w-full h-full bg-[var(--top-text-color)] border-2 border-[var(--top-background)] group-hover:border-[var(--top-text-color)] group-hover:bg-[var(--top-background)]"></span>
-                  <span className="relative text-[var(--top-background)] text-3xl font-bold group-hover:text-[var(--top-text-color)] ease-in-out">
-                    REGISTRY
-                  </span>
+                  <div className="flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl">
+                      REGISTRY
+                    </button>
+                  </div>
                 </Link>
               </div>
             </div>

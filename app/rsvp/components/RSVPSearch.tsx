@@ -67,8 +67,8 @@ export default function RSVPSearch({ onRSVPFound }: RSVPSearchProps) {
       id="search-component"
       className="flex items-center justify-center min-h-screen "
     >
-      <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
-        <h1 className="text-2xl font-semibold text-center mb-6 text-gray-800">
+      <div className="shadow-md rounded-lg p-8 max-w-md w-full">
+        <h1 className="text-2xl font-semibold text-center mb-6 text-[var(--top-text-color)]">
           Find Your RSVP
         </h1>
         <div className="mb-4">
@@ -80,15 +80,18 @@ export default function RSVPSearch({ onRSVPFound }: RSVPSearchProps) {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <button
-          onClick={handleSearch}
-          className={`w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200 ${
-            loading || !fullName.trim() ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          disabled={loading || !fullName.trim()} // Disable if loading or input is empty
-        >
-          {loading ? "Searching..." : "Search"}
-        </button>
+        <div className="flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+          <button
+            onClick={handleSearch}
+            className={`flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl ${
+              loading || !fullName.trim() ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading || !fullName.trim()} // Disable if loading or input is empty
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
+        </div>
+
         {loading && (
           <div className="mt-4 text-center">
             <p className="text-gray-500">Loading...</p>

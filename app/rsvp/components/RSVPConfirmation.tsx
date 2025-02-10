@@ -133,39 +133,39 @@ export default function RSVPConfirmation({
       id="confirmation-component"
       className="flex items-center justify-center min-h-screen"
     >
-      <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
-        <h1 className="text-2xl font-semibold text-center mb-2 text-gray-800">
+      <div className="shadow-md rounded-lg p-8 max-w-md w-full">
+        <h1 className="text-2xl font-semibold text-center mb-2 text-[var(--top-text-color)]">
           Confirm Your RSVP
         </h1>
-        <h2 className="text-center text-gray-500 mb-6">
+        <h2 className="text-center text-[var(--top-text-color)] mb-6">
           Wedding Date: Saturday October 04, 2025
         </h2>
 
         {/* Party Members */}
-        <h3 className="text-lg font-semibold text-gray-700 border-b-2 border-black pb-2">
+        <h3 className="text-lg font-semibold text-[var(--top-text-color)] border-b-2 border-white pb-2">
           Party Members
         </h3>
         <div className="space-y-6 mt-4">
           {sortedPartyMembers.map((member, index) => (
             <div
               key={member.id}
-              className={`flex flex-col gap-2 pb-4 flex flex-col gap-2 p-4 bg-white rounded-lg shadow-md border border-gray-200 ${
+              className={`flex flex-col gap-2 pb-4 flex flex-col gap-2 p-4  rounded-lg shadow-md border border-gray-200 ${
                 index === sortedPartyMembers.length - 1
-                  ? "border-b border-black"
+                  ? "border-b border-white"
                   : ""
               }`}
             >
               {/* Name Input or Display */}
               <div className="flex flex-col gap-2">
                 {member.firstName && member.lastName ? (
-                  <p className="text-md font-medium text-gray-700 font-semibold">
+                  <p className="text-md font-medium text-[var(--top-text-color)] font-semibold">
                     {member.firstName} {member.lastName}
                   </p>
                 ) : (
                   <>
                     <label
                       htmlFor={`fullName-${member.id}`}
-                      className="text-sm text-gray-500"
+                      className="text-sm text-[var(--top-text-color)]"
                     >
                       Type guest full name
                     </label>
@@ -213,7 +213,7 @@ export default function RSVPConfirmation({
               <div className="flex flex-col">
                 <label
                   htmlFor={`email-${member.id}`}
-                  className="text-sm text-gray-500"
+                  className="text-sm text-[var(--top-text-color)]"
                 >
                   Email (optional)
                 </label>
@@ -232,7 +232,7 @@ export default function RSVPConfirmation({
 
         {/* Note Input */}
         <div className="mt-6">
-          <label className="block text-gray-700 mb-2">
+          <label className="block text-[var(--top-text-color)] mb-2">
             Leave a note for the couple
           </label>
           <textarea
@@ -244,14 +244,17 @@ export default function RSVPConfirmation({
         </div>
 
         {/* Submit Button */}
-        <button
-          onClick={handleSubmit}
-          className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-200 mt-6 ${
-            loading ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
+
+        <div className="mt-10 flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
+          <button
+            onClick={handleSubmit}
+            className={`flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+        </div>
       </div>
     </div>
   );
