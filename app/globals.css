@@ -77,12 +77,26 @@ body {
   color: var(--top-text-color);
 }
 
+#option-info {
+  flex-direction: column;
+  gap: 40px;
+  width: 50%;
+  align-items: center;
+}
+
+.information-hero {
+  justify-content: right;
+}
+
+.button-info {
+  min-width: 400px;
+}
+
 #wedding-section-date {
   margin: 0;
   line-height: 0.5;
   color: var(--top-text-color);
   /* text-align: right; */
-  line-height: 1.2; /* More standard line height */
   font-family: var(--roboto);
   position: absolute;
   bottom: -13px;
@@ -151,11 +165,21 @@ body {
   #wedding-section-date {
     font-size: 20px;
     line-height: 0.2;
+    right: unset;
   }
 
   #option-info {
-    flex-direction: column;
-    gap: 50px;
+    margin-top: -50px;
+    width: 100%;
+    gap: 0px;
+  }
+
+  .information-hero {
+    justify-content: center;
+  }
+
+  .button-info {
+    min-width: 400px;
   }
 
   .button-info {

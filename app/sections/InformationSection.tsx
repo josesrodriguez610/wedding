@@ -160,18 +160,9 @@ export default function InformationSection() {
           loading="eager"
         />
 
-        <div className="absolute inset-0 flex justify-center items-center z-10">
-          <div id="option-info" className="flex justify-around w-full">
-            <div className="flex flex-col items-center">
-              <div className="max-w-xs px-4">
-                {/* <p className="text-image-info text-white text-lg font-semibold">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industrys
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </p> */}
-              </div>
+        <div className="information-hero absolute inset-0 flex justify-center items-center z-10">
+          <div id="option-info" className="flex w-full">
+            <div className="flex">
               <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/rsvp"
@@ -185,17 +176,7 @@ export default function InformationSection() {
                 </Link>
               </div>
             </div>
-
             <div className="flex flex-col items-center">
-              <div className="max-w-xs px-4">
-                {/* <p className="text-image-info text-white text-lg font-semibold">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industrys
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </p> */}
-              </div>
               <div className="button-info w-full text-center pt-3 mt-auto">
                 <Link
                   href="/registry"
