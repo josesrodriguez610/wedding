@@ -50,7 +50,7 @@
   width: 40px;
   height: 2px;
   position: absolute;
-  background: var(--top-text-color);
+  background: var(--top-background);
   transition: all 250ms ease-out;
 }
 
@@ -110,7 +110,7 @@
   line-height: 80%;
   will-change: transform;
   transition: letter-spacing 0.3s;
-  color: var(--top-text-color);
+  color: var(--top-background);
 }
 
 .menu-item p:hover {

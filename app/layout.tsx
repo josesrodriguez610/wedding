@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { canopee, editorialNew, roboto } from "./fonts";
+import { canopee, editorialNew, roboto, gloriaHallelujah } from "./fonts";
 import "./globals.css";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import NavWrapper from "./components/NavWrapper";
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${canopee.variable} ${editorialNew.variable} ${roboto.variable} antialiased`}
+        className={`${canopee.variable} ${editorialNew.variable} ${roboto.variable} ${gloriaHallelujah.variable} antialiased`}
       >
         <NavWrapper /> {/* Now it conditionally renders NavBar */}
         <SmoothScrollProvider>{children}</SmoothScrollProvider>

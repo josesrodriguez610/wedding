@@ -1,11 +1,17 @@
 import localFont from "next/font/local";
 
-import { Roboto } from "next/font/google";
+import { Roboto, Gloria_Hallelujah } from "next/font/google";
 
 export const roboto = Roboto({
   subsets: ["latin"], // Use subsets like 'latin' for optimal performance
   weight: ["400", "700"], // Specify font weights you need
   variable: "--roboto",
+});
+
+export const gloriaHallelujah = Gloria_Hallelujah({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--gloria",
 });
 
 export const canopee = localFont({

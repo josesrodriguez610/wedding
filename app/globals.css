@@ -5,15 +5,16 @@
 :root {
   /* --background: #ffffff;
   --foreground: #171717; */
-  --top-background: #231f20;
-  --top-text-color: #fbcbbc;
+  /* --top-background: #231f20;
+  --top-text-color: #fbcbbc; */
+  --top-background: #f6f3ec;
+  --top-text-color: #084332;
 }
 
 body {
-  /* color: var(--foreground);
-  background: var(--background); */
   background: var(--top-background);
-  font-family: var(--font-editorial-new);
+  /* font-family: var(--font-editorial-new); */
+  font-family: var(--gloria);
 }
 
 #hero-section-container {
@@ -71,7 +72,7 @@ body {
 #wedding-text {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 5.9rem;
-  font-family: var(--roboto);
+  font-family: var(--gloria);
   font-weight: 900;
   color: var(--top-text-color);
 }

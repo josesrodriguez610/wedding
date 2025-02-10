@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import SplitType from "split-type";
 import Link from "next/link";
+import Image from "next/image";
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,7 +110,7 @@ export default function InformationSection() {
   return (
     <div
       id="information-section"
-      className="bg-[#fbcbbc] w-full h-screen flex flex-col text-[var(--top-background)]"
+      className="w-full h-screen flex flex-col text-[var(--top-background)]"
     >
       {/* Top Half */}
       <div
@@ -136,36 +137,28 @@ export default function InformationSection() {
         {/* <RSVP /> */}
       </div>
 
-      {/* Video Section */}
+      {/* Video Section  desktop*/}
       <div className="video-container inset-0 z-0">
-        <video
-          className="video-desktop w-full h-full object-cover hidden lg:block"
-          muted
-          playsInline
-          loop
-          autoPlay
-          // src="/movies/mia-and-millie.mp4"
-        >
-          <source
-            src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737902973/mia_and_millie-test3-desktop_ryablh.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <video
-          className="video-mobile w-full h-full object-cover block lg:hidden"
-          muted
-          playsInline
-          loop
-          autoPlay
-          // src="/movies/mia-and-millie-phone-vertical.mp4"
-        >
-          <source
-            src="https://res.cloudinary.com/dqz6rioss/video/upload/v1737903149/mia-and-millie-phone_woiaik.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+        <Image
+          className="hidden lg:block"
+          id="image-hero"
+          src="/2.jpg"
+          alt="Hero Image"
+          fill
+          style={{ objectFit: "cover" }}
+          priority
+          loading="eager"
+        />
+        <Image
+          className="block lg:hidden"
+          id="image-hero"
+          src="/5.jpg"
+          alt="Hero Image"
+          fill
+          style={{ objectFit: "cover" }}
+          priority
+          loading="eager"
+        />
 
         <div className="absolute inset-0 flex justify-center items-center z-10">
           <div id="option-info" className="flex justify-around w-full">
@@ -184,8 +177,8 @@ export default function InformationSection() {
                   href="/rsvp"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
                 >
-                  <div className="flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
-                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl">
+                  <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]">
                       RSVP
                     </button>
                   </div>
@@ -208,8 +201,8 @@ export default function InformationSection() {
                   href="/registry"
                   className="w-full relative inline-block px-4 py-2 font-medium group"
                 >
-                  <div className="flex max-w-sm rounded-xl bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
-                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl">
+                  <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+                    <button className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]">
                       REGISTRY
                     </button>
                   </div>
