@@ -176,7 +176,7 @@ export default function RSVPConfirmation({
                       onChange={(e) =>
                         handleNameChange(member.id, e.target.value)
                       }
-                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="input-global w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter full name"
                     />
                   </>
@@ -222,7 +222,7 @@ export default function RSVPConfirmation({
                   type="email"
                   value={emailUpdates[member.id] || ""}
                   onChange={(e) => handleEmailChange(member.id, e)}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="input-global w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter email address"
                 />
               </div>
@@ -238,7 +238,7 @@ export default function RSVPConfirmation({
           <textarea
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-global w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter your message here"
           />
         </div>

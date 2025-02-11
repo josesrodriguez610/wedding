@@ -1,0 +1,49 @@
+.location-section {
+  height: 100vh;
+  display: flex; /* Enables flexbox */
+  flex-direction: column; /* Stack top and bottom containers */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  gap: 50px; /* Adds spacing between top and bottom */
+}
+
+.top-container {
+  gap: 50px;
+  color: var(--top-text-color);
+}
+
+.title-where {
+  padding-top: 10px;
+  font-size: 48px;
+  padding-bottom: 32px;
+}
+
+.square-church-image {
+  width: 600px;
+}
+
+.location-text {
+  font-size: 23px;
+  font-family: var(--roboto);
+  color: var(--top-text-color);
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.location-paragraph {
+  font-size: 23px;
+  font-family: var(--roboto);
+  color: var(--top-text-color);
+  max-width: 820px; /* Prevents touching edges */
+  margin: 0 auto; /* Centers the paragraph */
+  text-align: center; /* Centers text */
+}
+
+.bottle-image {
+  width: 180px;
+}

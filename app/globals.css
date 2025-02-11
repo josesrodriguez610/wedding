@@ -17,6 +17,10 @@ body {
   font-family: var(--gloria);
 }
 
+.input-global {
+  font-family: var(--roboto);
+}
+
 #hero-section-container {
   min-height: 100vh;
 }
