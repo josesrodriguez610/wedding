@@ -26,9 +26,8 @@ const LocationSection = () => {
             <Image
               src="/Livaudais.jpg"
               alt="Hero Image"
-              layout="fill" // Makes the image fill the div
-              objectFit="cover" // Ensures it covers the entire space
-              objectPosition="center" // Centers the image
+              fill // ✅ Replaces layout="fill"
+              className="object-cover object-center"
               priority
               loading="eager"
             />
@@ -40,9 +39,8 @@ const LocationSection = () => {
           <Image
             src="/bottle.png"
             alt="Hero Image"
-            layout="fill"
-            objectFit="contain"
-            objectPosition="center"
+            fill // ✅ Replaces layout="fill"
+            className="object-contain object-center"
             priority
             loading="eager"
           />
