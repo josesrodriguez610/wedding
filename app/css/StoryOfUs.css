@@ -1,0 +1,46 @@
+.story-of-us-section {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+}
+
+.story-of-us-container {
+  gap: 40px;
+}
+
+.story-of-us-right {
+  text-align: center;
+  max-width: 530px;
+}
+
+.story-of-us-title {
+  font-size: 50px;
+  color: var(--top-text-color);
+}
+
+.story-of-us-right > p {
+  font-size: 25px;
+  font-family: var(--roboto);
+  padding-top: 30px;
+  color: var(--top-text-color);
+}
+
+@media only screen and (max-width: 600px) {
+  .story-of-us-section {
+    height: auto;
+    gap: 0px;
+  }
+  .story-of-us-container {
+    flex-direction: column;
+    width: 90%;
+    gap: 0px;
+  }
+
+  .story-of-us-title {
+    font-size: 40px;
+    padding-top: 60px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}

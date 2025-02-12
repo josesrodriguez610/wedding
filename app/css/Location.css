@@ -49,14 +49,14 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .title-where {
-    font-size: 38px;
-    padding-bottom: 20px;
-  }
-
   .location-section {
     height: auto;
     gap: 0px;
+  }
+
+  .title-where {
+    font-size: 38px;
+    padding-bottom: 20px;
   }
 
   .top-container {

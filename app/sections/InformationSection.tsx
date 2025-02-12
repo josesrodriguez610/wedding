@@ -1,16 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import SplitType from "split-type";
 import Link from "next/link";
 import Image from "next/image";
+import ScrollArrow from "../rsvp/components/ScrollArrow";
+
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export default function InformationSection() {
+  const [showArrow, setShowArrow] = useState(false);
+
   useEffect(() => {
     // Split the text into words and characters
     new SplitType("#wedding-section-title", {
@@ -81,23 +85,7 @@ export default function InformationSection() {
         //   toggleActions: "play none none none",
         // },
         onComplete: () => {
-          // Target the visible video based on the viewport
-          const desktopVideo = document.querySelector(
-            ".video-desktop"
-          ) as HTMLVideoElement | null;
-          const mobileVideo = document.querySelector(
-            ".video-mobile"
-          ) as HTMLVideoElement | null;
-
-          // Check if desktop or mobile video is visible
-          const isDesktop = window.innerWidth >= 1024; // Adjust breakpoint if needed
-          const video = isDesktop ? desktopVideo : mobileVideo;
-
-          if (video) {
-            video.muted = true;
-            video.loop = true;
-            video.play();
-          }
+          setShowArrow(true);
         },
       }
     );
@@ -110,7 +98,7 @@ export default function InformationSection() {
   return (
     <div
       id="information-section"
-      className="w-full h-screen flex flex-col text-[var(--top-background)]"
+      className="relative w-full h-screen flex flex-col text-[var(--top-background)]"
     >
       {/* Top Half */}
       <div
@@ -193,6 +181,13 @@ export default function InformationSection() {
           </div>
         </div>
       </div>
+      {/* ✅ Scroll Arrow Positioned at Bottom of the Visible Screen */}
+      {/* ✅ Keep Scroll Arrow Fixed at the Bottom */}
+      {showArrow && (
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+          <ScrollArrow targetId="location-section" />
+        </div>
+      )}
     </div>
   );
 }

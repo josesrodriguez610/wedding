@@ -7,7 +7,7 @@ const LocationSection = () => {
   const isPhoneView = useIsPhoneView();
 
   return (
-    <div className="location-section">
+    <div id="location-section" className="location-section">
       <div className="top-container justify-center flex flex-col sm:flex-row">
         {isPhoneView ? (
           // ✅ Switched order for mobile view
