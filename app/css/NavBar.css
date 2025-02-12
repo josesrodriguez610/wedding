@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5em 2em;
-  color: white;
+  color: #084332;
   mix-blend-mode: difference;
   z-index: 2;
 }
@@ -23,7 +23,7 @@
 .logo a {
   text-decoration: none;
   font-size: 30px;
-  color: #cdc6be;
+  color: #f6f3ec;
 }
 
 .toggle-btn {

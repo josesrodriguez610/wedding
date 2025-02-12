@@ -23,8 +23,8 @@ export default function Page() {
     setTimeout(() => {
       setStep("search"); // Redirect back to the search step after 4 seconds
       setData(null); // Clear data for a fresh search
-      router.push("/"); // Use Next.js router to navigate to home
-    }, 4000);
+      router.push("/#location-section"); // Use Next.js router to navigate to home
+    }, 2000);
   };
 
   return (

@@ -1,5 +1,5 @@
 .story-of-us-section {
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   justify-content: center; /* Centers content vertically */
   align-items: center; /* Centers content horizontally */

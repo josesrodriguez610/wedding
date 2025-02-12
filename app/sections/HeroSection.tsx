@@ -39,7 +39,7 @@ export default function HeroSection() {
         const currentIndex = slides.indexOf(prevSlide);
         const nextIndex = (currentIndex + 1) % slides.length;
 
-        if (nextIndex === slides.length - 1 && scrollIconAnimation === false) {
+        if (nextIndex === 1 && scrollIconAnimation === false) {
           setScrollIconAnimation(true);
         }
 

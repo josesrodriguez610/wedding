@@ -55,7 +55,8 @@
   }
 
   .title-where {
-    font-size: 38px;
+    margin-top: 20px;
+    font-size: 34px;
     padding-bottom: 20px;
   }
 
@@ -72,7 +73,7 @@
   }
 
   .location-text {
-    font-size: 26px;
+    font-size: 23px;
   }
 
   .bottle-image {

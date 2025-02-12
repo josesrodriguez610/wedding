@@ -61,7 +61,7 @@ const LocationSection = () => {
               </div>
             </div>
             <div className="top-right flex-1 flex items-center justify-center max-w-sm">
-              <div className="square-registry-image aspect-square overflow-hidden relative rounded-lg">
+              <div className="square-church-image aspect-square overflow-hidden relative rounded-lg">
                 <Image
                   src="/Livaudais.jpg"
                   alt="Hero Image"

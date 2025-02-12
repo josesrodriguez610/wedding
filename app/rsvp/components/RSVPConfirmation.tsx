@@ -137,7 +137,7 @@ export default function RSVPConfirmation({
         <h1 className="text-2xl font-semibold text-center mb-2 text-[var(--top-text-color)]">
           Confirm Your RSVP
         </h1>
-        <h2 className="text-center text-[var(--top-text-color)] mb-6">
+        <h2 className="text-center text-[var(--top-text-color)] mb-6 roboto-font">
           Wedding Date: Saturday October 04, 2025
         </h2>
 
@@ -165,7 +165,7 @@ export default function RSVPConfirmation({
                   <>
                     <label
                       htmlFor={`fullName-${member.id}`}
-                      className="text-sm text-[var(--top-text-color)]"
+                      className="text-sm text-[var(--top-text-color)] roboto-font"
                     >
                       Type guest full name
                     </label>
@@ -188,7 +188,7 @@ export default function RSVPConfirmation({
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => handleToggle(member.id, true)}
-                    className={`px-4 py-2 rounded-lg transition duration-200 ${
+                    className={`px-4 py-2 rounded-lg transition duration-200 roboto-font ${
                       goingStatus[member.id] === true
                         ? "bg-green-500 text-white"
                         : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -198,7 +198,7 @@ export default function RSVPConfirmation({
                   </button>
                   <button
                     onClick={() => handleToggle(member.id, false)}
-                    className={`px-4 py-2 rounded-lg transition duration-200 ${
+                    className={`px-4 py-2 rounded-lg transition duration-200 roboto-font ${
                       goingStatus[member.id] === false
                         ? "bg-red-500 text-white"
                         : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -213,7 +213,7 @@ export default function RSVPConfirmation({
               <div className="flex flex-col">
                 <label
                   htmlFor={`email-${member.id}`}
-                  className="text-sm text-[var(--top-text-color)]"
+                  className="text-sm text-[var(--top-text-color)] roboto-font"
                 >
                   Email (optional)
                 </label>
@@ -232,7 +232,7 @@ export default function RSVPConfirmation({
 
         {/* Note Input */}
         <div className="mt-6">
-          <label className="block text-[var(--top-text-color)] mb-2">
+          <label className="block text-[var(--top-text-color)] mb-2 roboto-font">
             Leave a note for the couple
           </label>
           <textarea
@@ -248,7 +248,7 @@ export default function RSVPConfirmation({
         <div className="mt-10 flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
           <button
             onClick={handleSubmit}
-            className={`flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)] ${
+            className={`flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)] roboto-font ${
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

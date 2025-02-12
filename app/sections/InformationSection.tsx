@@ -8,12 +8,15 @@ import SplitType from "split-type";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollArrow from "../rsvp/components/ScrollArrow";
+import useViewportHeight from "../hooks/useViewportHeight";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export default function InformationSection() {
   const [showArrow, setShowArrow] = useState(false);
+
+  useViewportHeight();
 
   useEffect(() => {
     // Split the text into words and characters
