@@ -23,13 +23,14 @@ const page = () => {
             We know life is hard, and busy, and that weekends are always too
             short so we truly appreciate you taking the time to spend your day
             with us-especially since we know that many of you are traveling to
-            do so. We truly don't want (or need) anything more from you than
-            your Saturday night.
+            do so. We truly don&apos;t want (or need) anything more from you
+            than your Saturday night.
           </p>
           <p>
-            But if you're stubborn and still want to give more, then you can
-            contribute to our honeymoon fund here. We're going to sunny London
-            and we'd love any tips or recommendations if you have any.
+            But if you&apos;re stubborn and still want to give more, then you
+            can contribute to our honeymoon fund here. We&apos;re going to sunny
+            London and we&apos;d love any tips or recommendations if you have
+            any.
           </p>
         </div>
       </div>

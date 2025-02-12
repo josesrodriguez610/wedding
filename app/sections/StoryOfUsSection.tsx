@@ -29,8 +29,8 @@ const StoryOfUsSection = () => {
               <p>
                 The first time I saw him, we were at the same gate for a flight
                 to Austin. I remember glancing over at him and thinking, Oh,
-                wow, he's cute, how awesome would it be if he ended up sitting
-                next to me?
+                wow, he&apos;s cute, how awesome would it be if he ended up
+                sitting next to me?
               </p>
               <p>
                 Well, he did. We started talking, and the rest, as they say, is
@@ -39,7 +39,7 @@ const StoryOfUsSection = () => {
               <p>
                 Just kidding, we met while working at an Italian restaurant: one
                 year of flirting, ten years of dating, one dog, and one home
-                purchase later, we've finally decided to make it official.
+                purchase later, we&apos;ve finally decided to make it official.
               </p>
             </div>
           </>
@@ -63,8 +63,8 @@ const StoryOfUsSection = () => {
               <p>
                 The first time I saw him, we were at the same gate for a flight
                 to Austin. I remember glancing over at him and thinking, Oh,
-                wow, he's cute, how awesome would it be if he ended up sitting
-                next to me?
+                wow, he&apos;s cute, how awesome would it be if he ended up
+                sitting next to me?
               </p>
               <p>
                 Well, he did. We started talking, and the rest, as they say, is
@@ -73,7 +73,7 @@ const StoryOfUsSection = () => {
               <p>
                 Just kidding, we met while working at an Italian restaurant: one
                 year of flirting, ten years of dating, one dog, and one home
-                purchase later, we've finally decided to make it official.
+                purchase later, we&apos;ve finally decided to make it official.
               </p>
             </div>
           </>

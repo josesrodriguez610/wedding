@@ -2,7 +2,11 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 
-const ScrollArrow = ({ targetId }) => {
+interface ScrollArrowProps {
+  targetId: string; // ✅ Explicitly define 'targetId' as a string
+}
+
+const ScrollArrow: React.FC<ScrollArrowProps> = ({ targetId }) => {
   useEffect(() => {
     // Animate arrow movement
     gsap.fromTo(
