@@ -47,3 +47,35 @@
 .bottle-image {
   width: 180px;
 }
+
+@media only screen and (max-width: 600px) {
+  .title-where {
+    font-size: 38px;
+    padding-bottom: 20px;
+  }
+
+  .location-section {
+    height: auto;
+    gap: 0px;
+  }
+
+  .top-container {
+    gap: 10px;
+    flex-direction: column;
+    width: 90%;
+    padding-bottom: 30px;
+  }
+
+  .bottom-container {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .location-text {
+    font-size: 26px;
+  }
+
+  .bottle-image {
+    margin-bottom: 40px;
+  }
+}
