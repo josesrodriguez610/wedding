@@ -43,4 +43,8 @@
     text-align: center;
     padding-bottom: 20px;
   }
+
+  .story-of-us-right > p {
+    font-size: 23px;
+  }
 }
