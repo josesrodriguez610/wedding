@@ -47,7 +47,7 @@ export default function InformationSection() {
     tl.from("#wedding-section-date", {
       x: "-200%", // Start off-screen to the left
       opacity: 0, // Start fully transparent
-      duration: 2.8, // Animation duration
+      duration: 2.3, // Animation duration
       ease: "power3.out", // Smooth easing
       // onComplete: () => {
       //   // Add the border to #top-half
