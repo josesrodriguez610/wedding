@@ -7,17 +7,31 @@ import "../css/Registry.css";
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // const handleVenmoRedirect = () => {
+  //   const venmoAppLink =
+  //     "venmo://paycharge?txn=pay&recipients=ashley-larsen-23";
+  //   const venmoWebLink = "https://venmo.com/u/ashley-larsen-23";
+
+  //   // Attempt to open Venmo app
+  //   window.location.href = venmoAppLink;
+
+  //   // Fallback to web after a delay (in case app doesn't open)
+  //   setTimeout(() => {
+  //     window.location.href = venmoWebLink;
+  //   }, 1000);
+  // };
+
   const handleVenmoRedirect = () => {
-    const venmoAppLink = "venmo://user/ashley-larsen-23";
-    const venmoWebLink = "https://venmo.com/u/ashley-larsen-23";
+    const profileLink = "https://venmo.com/u/ashley-larsen-23";
+    const paymentLink = "venmo://paycharge?txn=pay&recipients=ashley-larsen-23";
 
-    // Attempt to open Venmo app
-    window.location.href = venmoAppLink;
+    // Open Venmo Profile in a new tab
+    window.open(profileLink, "_blank");
 
-    // Fallback to web after a delay (in case app doesn't open)
+    // Delay and then open the payment link
     setTimeout(() => {
-      window.location.href = venmoWebLink;
-    }, 1000);
+      window.location.href = paymentLink;
+    }, 2000);
   };
 
   return (
