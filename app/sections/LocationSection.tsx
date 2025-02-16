@@ -1,10 +1,16 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Location.css";
 import useIsPhoneView from "../hooks/useIsPhoneView";
+import ScrollArrow from "../rsvp/components/ScrollArrow";
 
 const LocationSection = () => {
+  const [showArrow, setShowArrow] = useState(false);
   const isPhoneView = useIsPhoneView();
+
+  useEffect(() => {
+    setShowArrow(true);
+  }, []);
 
   return (
     <div id="location-section" className="location-section">
@@ -96,6 +102,13 @@ const LocationSection = () => {
           </h1>
         </div>
       </div>
+      {/* ✅ Scroll Arrow Positioned at Bottom of the Visible Screen */}
+      {/* ✅ Keep Scroll Arrow Fixed at the Bottom */}
+      {showArrow && (
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+          <ScrollArrow targetId="story-of-us" />
+        </div>
+      )}
     </div>
   );
 };

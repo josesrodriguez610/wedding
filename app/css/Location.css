@@ -1,4 +1,5 @@
 .location-section {
+  position: relative;
   height: 100vh;
   display: flex; /* Enables flexbox */
   flex-direction: column; /* Stack top and bottom containers */

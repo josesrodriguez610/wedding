@@ -6,7 +6,7 @@ import useIsPhoneView from "../hooks/useIsPhoneView";
 const StoryOfUsSection = () => {
   const isPhoneView = useIsPhoneView();
   return (
-    <div className="story-of-us-section">
+    <div id="story-of-us" className="story-of-us-section">
       <div className="story-of-us-container flex flex-column">
         {isPhoneView ? (
           <>

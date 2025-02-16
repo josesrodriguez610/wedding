@@ -1,8 +1,26 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 import "../css/Registry.css";
 
-const page = () => {
+const Page = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleVenmoRedirect = () => {
+    const venmoAppLink =
+      "venmo://paycharge?txn=pay&recipients=Ashley-Larsen-23";
+    const venmoWebLink = "https://venmo.com/u/Ashley-Larsen-23";
+
+    // Attempt to open Venmo app
+    window.location.href = venmoAppLink;
+
+    // Fallback to web after a delay (in case app doesn't open)
+    setTimeout(() => {
+      window.location.href = venmoWebLink;
+    }, 1000);
+  };
+
   return (
     <div className="registry-section-page">
       <div className="registry-section-container">
@@ -34,8 +52,59 @@ const page = () => {
           </p>
         </div>
       </div>
+      <div className="payments">
+        <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+          <button
+            onClick={handleVenmoRedirect}
+            className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]"
+          >
+            By Venmo
+          </button>
+        </div>
+        <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]"
+          >
+            By Mail
+          </button>
+        </div>
+      </div>
+      {/* Popup (Modal) */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="modal-body bg-white rounded-xl p-6 shadow-xl max-w-md w-full border border-[var(--top-text-color)]">
+            {/* Modal Title */}
+            <h2 className="text-2xl font-bold text-[var(--top-text-color)] mb-4">
+              Send by Mail
+            </h2>
+
+            {/* Modal Content */}
+            <p className="roboto-font">Our address is</p>
+            <p className="roboto-font font-bold">
+              2435 Governor Nicholls street
+              <br />
+              New Orleans, LA 70119
+            </p>
+
+            <p className="roboto-font">
+              You can also bring anything with you to the venue on October 4.
+            </p>
+
+            {/* Close Button */}
+            <div className="text-right">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-4 py-2 bg-[var(--top-text-color)] text-white font-bold rounded-lg"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default page;
+export default Page;

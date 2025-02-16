@@ -30,6 +30,8 @@ export default function HeroSection() {
     setScreenHeight();
     window.addEventListener("resize", setScreenHeight);
 
+    setScrollIconAnimation(true);
+
     return () => window.removeEventListener("resize", setScreenHeight);
   }, []);
 
@@ -39,9 +41,9 @@ export default function HeroSection() {
         const currentIndex = slides.indexOf(prevSlide);
         const nextIndex = (currentIndex + 1) % slides.length;
 
-        if (nextIndex === 1 && scrollIconAnimation === false) {
-          setScrollIconAnimation(true);
-        }
+        // if (nextIndex === 1 && scrollIconAnimation === false) {
+        //   setScrollIconAnimation(true);
+        // }
 
         return slides[nextIndex]; // Update the current slide
       });

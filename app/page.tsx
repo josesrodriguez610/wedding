@@ -25,7 +25,7 @@ export default function Home() {
         }, 100); // Small delay ensures section is in view
       }
     }
-  }, []);
+  }, [router]);
 
   return (
     <div>

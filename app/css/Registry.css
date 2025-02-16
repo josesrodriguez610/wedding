@@ -4,6 +4,7 @@
   flex-direction: column; /* Stack top and bottom containers */
   justify-content: center; /* Centers content vertically */
   align-items: center; /* Centers content horizontally */
+  padding-bottom: 50px;
 }
 
 .registry-section-container {
@@ -33,6 +34,27 @@
   margin-top: 16px;
 }
 
+.payments {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  gap: 40px;
+}
+
+.payments > div {
+  min-width: 250px;
+  margin-top: 20px;
+}
+
+.modal-body h2 {
+  font-size: 26px;
+}
+
+.modal-body p {
+  font-size: 25px;
+  padding-top: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .registry-section-page {
     height: auto;
@@ -51,5 +73,11 @@
 
   .registry-paragraphs {
     font-size: 22px;
+  }
+
+  .payments {
+    width: 80%;
+    flex-direction: column;
+    gap: 20px;
   }
 }
