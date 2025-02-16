@@ -104,7 +104,7 @@ const LocationSection = () => {
       </div>
       {/* ✅ Scroll Arrow Positioned at Bottom of the Visible Screen */}
       {/* ✅ Keep Scroll Arrow Fixed at the Bottom */}
-      {showArrow && (
+      {!isPhoneView && showArrow && (
         <div className="absolute bottom-8 left-0 right-0 flex justify-center">
           <ScrollArrow targetId="story-of-us" />
         </div>
