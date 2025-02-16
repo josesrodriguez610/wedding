@@ -66,14 +66,18 @@ const Page = () => {
         </div>
       </div>
       <div className="payments">
-        <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
-          <button
-            onClick={handleVenmoRedirect}
-            className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]"
-          >
-            By Venmo
-          </button>
+        <div className="relative">
+          <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+            <button
+              onClick={handleVenmoRedirect}
+              className="flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]"
+            >
+              By Venmo
+            </button>
+          </div>
+          <span className="handle absolute roboto-font">@Ashley-Larsen-23</span>
         </div>
+
         <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
           <button
             onClick={() => setIsOpen(true)}

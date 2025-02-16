@@ -55,7 +55,15 @@
   padding-top: 15px;
 }
 
+.handle {
+  left: 20%;
+}
+
 @media only screen and (max-width: 600px) {
+  .handle {
+    left: 30%;
+  }
+
   .registry-section-page {
     height: auto;
     gap: 0px;
