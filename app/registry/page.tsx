@@ -8,9 +8,8 @@ const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleVenmoRedirect = () => {
-    const venmoAppLink =
-      "venmo://paycharge?txn=pay&recipients=Ashley-Larsen-23";
-    const venmoWebLink = "https://venmo.com/u/Ashley-Larsen-23";
+    const venmoAppLink = "venmo://user/ashley-larsen-23";
+    const venmoWebLink = "https://venmo.com/u/ashley-larsen-23";
 
     // Attempt to open Venmo app
     window.location.href = venmoAppLink;
