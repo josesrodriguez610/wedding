@@ -5,6 +5,7 @@ import LocationSection from "./sections/LocationSection";
 import StoryOfUsSection from "./sections/StoryOfUsSection";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function Home() {
       <InformationSection />
       <LocationSection />
       <StoryOfUsSection />
+      <Footer />
     </div>
   );
 }

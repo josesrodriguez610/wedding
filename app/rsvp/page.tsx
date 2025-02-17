@@ -6,6 +6,7 @@ import RSVPConfirmation from "./components/RSVPConfirmation";
 import ThankYou from "./components/ThankYou";
 import { useRouter } from "next/navigation";
 import { RSVP } from "../types/rsvp";
+import Footer from "../components/Footer";
 
 export default function Page() {
   const [step, setStep] = useState<"search" | "confirmation" | "thank-you">(
@@ -45,6 +46,7 @@ export default function Page() {
         />
       )}
       {step === "thank-you" && <ThankYou />}
+      <Footer />
     </>
   );
 }
