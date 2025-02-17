@@ -25,6 +25,28 @@ export default function RSVPEdit() {
   const [newPartyUsers, setNewPartyUsers] = useState([{ ...defaultUser }]);
   const [groups, setGroups] = useState<Groups>({});
 
+  const [rsvpCounts, setRsvpCounts] = useState({
+    Going: 0,
+    "Not Going": 0,
+    "No Response": 0,
+    Total: 0, // Add total count
+  });
+
+  // Fetch RSVP counts on component mount
+  useEffect(() => {
+    async function fetchRsvpCounts() {
+      try {
+        const response = await fetch("/api/rsvp/count");
+        const data = await response.json();
+        setRsvpCounts(data);
+      } catch (error) {
+        console.error("Error fetching RSVP counts:", error);
+      }
+    }
+
+    fetchRsvpCounts();
+  }, []);
+
   // Fetch RSVP groups
   useEffect(() => {
     fetch("/api/rsvp")
@@ -221,6 +243,24 @@ export default function RSVPEdit() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col items-center py-10 px-4">
+      {/* RSVP Counts Section */}
+      <div className="bg-gray-800 p-4 rounded-lg shadow-md text-center mb-6">
+        <p className="text-lg font-semibold text-gray-300">
+          👥 Total Users:{" "}
+          <span className="text-blue-400">{rsvpCounts.Total}</span>
+        </p>
+        <p className="text-lg font-semibold text-gray-300">
+          ✅ Going: <span className="text-green-400">{rsvpCounts.Going}</span>
+        </p>
+        <p className="text-lg font-semibold text-gray-300">
+          ❌ Not Going:{" "}
+          <span className="text-red-400">{rsvpCounts["Not Going"]}</span>
+        </p>
+        <p className="text-lg font-semibold text-gray-300">
+          ❓ No Response:{" "}
+          <span className="text-yellow-400">{rsvpCounts["No Response"]}</span>
+        </p>
+      </div>
       <h1 className="text-3xl font-extrabold mb-6 text-gray-200 tracking-wide">
         RSVP Dashboard
       </h1>
