@@ -111,6 +111,10 @@ body {
 } */
 
 @media only screen and (max-width: 600px) {
+  .text-hero {
+    margin-top: -60px;
+  }
+
   #top-half {
     align-items: inherit;
   }
