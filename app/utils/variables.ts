@@ -1,6 +1,6 @@
 export const slides = [
   {
-    image: "/portugal.jpg", // Path to the image
+    image: "/macchu.jpg", // Path to the image
     text: {
       primary: "We are finally",
       secondary: "making it",
@@ -18,7 +18,7 @@ export const slides = [
     layout: "text-right",
   },
   {
-    image: "/macchu.jpg",
+    image: "/AshleySergio1.jpeg",
     text: {
       primary: "On October",
       secondary: "4th 2025 ...",
