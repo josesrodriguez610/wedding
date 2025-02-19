@@ -1,6 +1,6 @@
 "use client";
 import HeroSection from "./sections/HeroSection";
-import InformationSection from "./sections/InformationSection";
+// import InformationSection from "./sections/InformationSection";
 import LocationSection from "./sections/LocationSection";
 import StoryOfUsSection from "./sections/StoryOfUsSection";
 import { useEffect } from "react";
