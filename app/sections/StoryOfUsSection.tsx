@@ -15,7 +15,7 @@ const StoryOfUsSection = () => {
               <div className="top-right flex-1 flex items-center justify-center max-w-sm">
                 <div className="square-church-image aspect-square overflow-hidden relative rounded-lg">
                   <Image
-                    src="/italy.jpg"
+                    src="/AshleySergio2.jpg"
                     alt="Hero Image"
                     fill
                     className="object-cover object-center"
