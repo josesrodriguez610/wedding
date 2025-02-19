@@ -111,7 +111,7 @@ export default function HeroSection() {
         </div>
 
         {/* Text Section */}
-        <div className="flex-1 w-full h-1/2 sm:h-full flex items-center justify-center p-8 bg-[var(--top-background)]">
+        <div className="text-section flex-1 w-full h-1/2 sm:h-full flex items-center justify-center p-8 bg-[var(--top-background)]">
           <div className="text-hero text-[var(--top-text-color)] font-thin">
             <h1
               id="text-first"

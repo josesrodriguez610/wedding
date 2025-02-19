@@ -124,6 +124,10 @@ body {
 } */
 
 @media only screen and (max-width: 600px) {
+  .text-section {
+    padding: 0px;
+  }
+
   .hero-button {
     padding: 10px;
     width: 140px;
