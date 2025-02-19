@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-      <InformationSection />
+      {/* <InformationSection /> */}
       <LocationSection />
       <StoryOfUsSection />
       <Footer />

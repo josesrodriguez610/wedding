@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { slides } from "../utils/variables";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(slides[0]); // Store
@@ -68,7 +69,7 @@ export default function HeroSection() {
 
   const scrollToNextSection = () => {
     console.log("hi");
-    const nextSection = document.getElementById("information-section");
+    const nextSection = document.getElementById("location-section");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
@@ -87,7 +88,7 @@ export default function HeroSection() {
           isPhoneView
             ? isTextLeft
               ? "flex-col"
-              : "flex-col-reverse"
+              : "flex-col"
             : isTextLeft
             ? "flex-row"
             : "flex-row-reverse"
@@ -152,6 +153,34 @@ export default function HeroSection() {
           </div>
         </div>
       )}
+      <div className="absolute-button-left absolute bottom-8 left-10 flex">
+        <div className="w-full text-center pt-3 mt-auto">
+          <Link
+            href="/rsvp"
+            className="w-full relative inline-block px-4 py-2 font-medium group"
+          >
+            <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+              <button className="hero-button flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]">
+                RSVP
+              </button>
+            </div>
+          </Link>
+        </div>
+      </div>
+      <div className="absolute-button-right absolute bottom-8 right-10 flex">
+        <div className="w-full text-center pt-3 mt-auto">
+          <Link
+            href="/registry"
+            className="w-full relative inline-block px-4 py-2 font-medium group"
+          >
+            <div className="flex max-w-sm rounded-xl border border-[var(--top-text-color)] p-0.5 shadow-lg">
+              <button className="hero-button flex-1 font-bold text-xl bg-white px-6 py-3 rounded-xl text-[var(--top-text-color)]">
+                REGISTRY
+              </button>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

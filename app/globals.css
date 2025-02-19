@@ -105,14 +105,40 @@ body {
   margin-top: 10px;
 }
 
+/* .absolute-button-left {
+  right: 200px;
+} */
+
+.hero-button {
+  width: 180px;
+}
+
+.hero-button:hover {
+  color: var(--top-background);
+  background: var(--top-text-color);
+}
+
 /* #confirmation-component > div {
   margin-top: 10px;
   background-color: var(--top-text-color);
 } */
 
 @media only screen and (max-width: 600px) {
+  .hero-button {
+    padding: 10px;
+    width: 140px;
+  }
+
+  .absolute-button-left {
+    left: 0 !important;
+  }
+
+  .absolute-button-right {
+    right: 0 !important;
+  }
+
   .text-hero {
-    margin-top: -60px;
+    margin-top: -100px;
   }
 
   #top-half {
