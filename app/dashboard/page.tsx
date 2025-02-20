@@ -8,7 +8,7 @@ const Dashboard = async () => {
 
   return (
     <>
-      <div className="bg-gray-100 p-4 text-left">
+      <div className="roboto-font bg-gray-100 p-4 text-left">
         <p className="text-gray-600">Signed in as:</p>
         <p className="font-medium">{session.user?.email}</p>
       </div>

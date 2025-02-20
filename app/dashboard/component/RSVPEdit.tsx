@@ -242,7 +242,7 @@ export default function RSVPEdit() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col items-center py-10 px-4">
+    <div className="roboto-font min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col items-center py-10 px-4">
       {/* RSVP Counts Section */}
       <div className="bg-gray-800 p-4 rounded-lg shadow-md text-center mb-6">
         <p className="text-lg font-semibold text-gray-300">
