@@ -112,28 +112,30 @@ export default function HeroSection() {
 
         {/* Text Section */}
         <div className="text-section flex-1 w-full h-1/2 sm:h-full flex items-center justify-center p-8 bg-[var(--top-background)]">
-          <div className="text-hero text-[var(--top-text-color)] font-thin">
-            <h1
-              id="text-first"
-              className="leading-[40px] text-[32px] sm:leading-[80px] sm:text-[76px]"
-            >
-              {text.primary}
-              <br />
-              {text.secondary}
-            </h1>
-            <h1
-              id="text-second"
-              style={{ fontFamily: "var(--font-canopee)" }}
-              className="pt-4 sm:pt-10 leading-[50px] text-[36px] sm:leading-[110px] sm:text-[96px] text-right"
-            >
-              {text.highlight}
-            </h1>
+          <div className="text-[var(--top-text-color)] font-thin">
+            <div className="text-hero">
+              <h1
+                id="text-first"
+                className="leading-[40px] text-[32px] sm:leading-[80px] sm:text-[76px]"
+              >
+                {text.primary}
+                <br />
+                {text.secondary}
+              </h1>
+              <h1
+                id="text-second"
+                style={{ fontFamily: "var(--font-canopee)" }}
+                className="pt-4 sm:pt-10 leading-[50px] text-[36px] sm:leading-[110px] sm:text-[96px] text-right"
+              >
+                {text.highlight}
+              </h1>
+            </div>
           </div>
         </div>
       </div>
       {/* Arrow Section */}
       {scrollIconAnimation && (
-        <div className="absolute bottom-8 w-full flex justify-center">
+        <div className="scroll-hero absolute bottom-8 w-full flex justify-center">
           <div className="scroll-arrow">
             <svg
               xmlns="http://www.w3.org/2000/svg"

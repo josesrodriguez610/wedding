@@ -289,3 +289,32 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media only screen and (max-width: 380px) {
+  #text-first {
+    font-size: 38px;
+    line-height: 60px;
+  }
+
+  #text-second {
+    font-size: 54px;
+  }
+
+  .hero-button {
+    padding: 6px;
+    width: 120px;
+    font-size: 18px;
+  }
+
+  .absolute-button-left {
+    bottom: 6;
+  }
+
+  .absolute-button-right {
+    bottom: 6;
+  }
+
+  .scroll-hero {
+    bottom: 5;
+  }
+}
