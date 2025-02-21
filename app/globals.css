@@ -307,14 +307,14 @@ body {
   }
 
   .absolute-button-left {
-    bottom: 6;
+    bottom: 3;
   }
 
   .absolute-button-right {
-    bottom: 6;
+    bottom: 3;
   }
 
   .scroll-hero {
-    bottom: 5;
+    bottom: 3;
   }
 }
