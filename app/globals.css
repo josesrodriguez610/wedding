@@ -290,7 +290,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 380px) {
   #text-first {
     font-size: 38px;
     line-height: 60px;
@@ -307,14 +307,17 @@ body {
   }
 
   .absolute-button-left {
-    bottom: 3;
+    bottom: 6;
   }
 
   .absolute-button-right {
-    bottom: 3;
+    bottom: 6;
   }
 
   .scroll-hero {
-    bottom: 3;
+    bottom: 5;
+  }
+  body {
+    background: red; /* Test styling */
   }
 }
