@@ -317,7 +317,11 @@ body {
   .scroll-hero {
     bottom: 5;
   }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px) {
   body {
-    background: red; /* Test styling */
+    background: green; /* Test styling */
   }
 }
+
