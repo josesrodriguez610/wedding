@@ -11,6 +11,7 @@ export interface User {
   phone: string;
   notes: string;
   going: boolean | null;
+  partyId?: string;
 }
 
 // Define the Groups type where partyId (string) maps to an array of Users

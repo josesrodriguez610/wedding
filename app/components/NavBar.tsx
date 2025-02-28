@@ -113,6 +113,14 @@ const NavBar = () => {
                   DASHBOARD
                 </p>
               </div>
+              <div className="menu-item">
+                <p
+                  id={getActiveClass("/dashboard/analytics")}
+                  onClick={() => handleNavigation("/dashboard/analytics")}
+                >
+                  ANALYTICS
+                </p>
+              </div>
 
               <div className="menu-item">
                 <p
