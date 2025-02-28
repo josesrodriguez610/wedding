@@ -24,7 +24,8 @@ const Analytics = () => {
 
   return (
     <div className="roboto-font min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col py-10 px-4">
-      Analytics
+      <h2 className="p-2">Analytics</h2>
+      <h2 className="p-2">Number of users: {users.length}</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
           <thead className="bg-gray-800 text-white">
