@@ -6,7 +6,7 @@ export async function GET(req: Request) {
     const url = new URL(req.url);
     const goingParam = url.searchParams.get("going");
 
-    // Convert query param to boolean or null
+    // Convert query param to boolean or null test
     let goingFilter: boolean | null = null;
     if (goingParam === "true") goingFilter = true;
     if (goingParam === "false") goingFilter = false;
