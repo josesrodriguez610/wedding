@@ -129,8 +129,9 @@ body {
   }
 
   .hero-button {
-    padding: 10px;
-    width: 140px;
+    padding: 4px;
+    width: 120px;
+    font-size: 18px;
   }
 
   .absolute-button-left {
