@@ -13,7 +13,7 @@ export default function HeroSection() {
   useEffect(() => {
     // Check if the viewport is smaller than 640px
     const handleResize = () => {
-      setIsPhoneView(window.innerWidth < 640);
+      setIsPhoneView(window.innerWidth < 840);
     };
 
     handleResize(); // Initial check

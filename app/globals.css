@@ -123,6 +123,36 @@ body {
   background-color: var(--top-text-color);
 } */
 
+@media only screen and (max-width: 825px) {
+  .text-hero {
+    margin-top: -100px;
+  }
+
+  #location-section {
+    height: unset;
+  }
+
+  .story-of-us-section {
+    height: auto !important;
+  }
+
+  .title-where {
+    font-size: 30px !important;
+  }
+
+  .location-arrow {
+    display: none;
+  }
+
+  /* .story-of-us-container {
+    padding-top: 50px;
+  } */
+
+  .story-of-us-container {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .text-section {
     padding: 0px;
