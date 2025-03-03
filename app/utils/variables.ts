@@ -20,10 +20,12 @@ export const slides = [
   {
     image: "/AshleySergio1.jpeg",
     text: {
-      primary: "On October",
-      secondary: "4th 2025 ...",
-      highlight: "Be there",
+      primary: "Good things",
+      secondary: "come to those ",
+      highlight: "Who Wait",
     },
     layout: "text-left",
   },
 ];
+
+//Good things come to those who wait
