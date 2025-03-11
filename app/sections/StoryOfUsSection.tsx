@@ -1,10 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/StoryOfUs.css";
 import useIsPhoneView from "../hooks/useIsPhoneView";
+import ScrollArrow from "../rsvp/components/ScrollArrow";
 
 const StoryOfUsSection = () => {
+  const [showArrow, setShowArrow] = useState(false);
   const isPhoneView = useIsPhoneView();
+
+  useEffect(() => {
+    setShowArrow(true);
+  }, []);
+
   return (
     <div id="story-of-us" className="story-of-us-section">
       <div className="story-of-us-container flex flex-column">
@@ -79,6 +86,11 @@ const StoryOfUsSection = () => {
           </>
         )}
       </div>
+      {!isPhoneView && showArrow && (
+        <div className="location-arrow absolute bottom-8 left-0 right-0 flex justify-center">
+          <ScrollArrow targetId="visiting" />
+        </div>
+      )}
     </div>
   );
 };

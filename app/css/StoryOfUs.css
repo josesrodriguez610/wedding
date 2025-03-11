@@ -1,4 +1,5 @@
 .story-of-us-section {
+  position: relative;
   height: 100vh;
   display: flex;
   justify-content: center; /* Centers content vertically */
