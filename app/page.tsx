@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "./components/Footer";
 import VisitingSection from "./sections/VisitingSection";
+import WhatsGoingDown from "./sections/WhatsGoingDown";
 
 export default function Home() {
   const router = useRouter();
@@ -35,7 +36,9 @@ export default function Home() {
       {/* <InformationSection /> */}
       <LocationSection />
       <StoryOfUsSection />
+      <WhatsGoingDown />
       <VisitingSection />
+
       <Footer />
     </div>
   );

@@ -88,7 +88,7 @@ const StoryOfUsSection = () => {
       </div>
       {!isPhoneView && showArrow && (
         <div className="location-arrow absolute bottom-8 left-0 right-0 flex justify-center">
-          <ScrollArrow targetId="visiting" />
+          <ScrollArrow targetId="whatsGoingOn" />
         </div>
       )}
     </div>

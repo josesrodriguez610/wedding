@@ -44,6 +44,7 @@ const LocationSection = () => {
                   Ceremony and reception will be <br /> held at Livaudais Hall
                   located <br /> at 2205 Second St <br />
                   New Orleans, LA 70113
+                  <p className="pt-6">Dress Code: Semi-Formal</p>
                 </h1>
               </div>
             </div>
@@ -63,6 +64,7 @@ const LocationSection = () => {
                   Livaudais Hall located at <br />
                   2205 Second St New Orleans,
                   <br /> LA 70113
+                  <p className="pt-6">Dress Code: Semi-Formal</p>
                 </h1>
               </div>
             </div>

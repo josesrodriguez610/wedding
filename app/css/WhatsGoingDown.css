@@ -1,0 +1,29 @@
+.whats-right {
+  max-width: 600px;
+}
+
+.square-whats-image {
+  width: 600px;
+}
+
+.whats-data-title {
+  padding-top: 5px;
+  font-size: 26px;
+  font-family: var(--roboto);
+  color: var(--top-text-color);
+  font-weight: 100;
+}
+
+@media only screen and (max-width: 1200px) {
+  .whats-image {
+    width: 100%;
+  }
+  .square-whats-image {
+    width: 100%;
+  }
+
+  #whatsGoingOn {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
