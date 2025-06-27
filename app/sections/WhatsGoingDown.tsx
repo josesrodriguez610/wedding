@@ -63,7 +63,7 @@ const WhatsGoingDown = () => {
               <hr className="border-t-2 border-[#114734] my-2 w-full" />
               <p className="whats-data-title">
                 <p>
-                  <strong>04:00 PM</strong> &nbsp;&nbsp; Sergio’s Birthday Bash
+                  <strong>01:00 PM</strong> &nbsp;&nbsp; Sergio’s Birthday Bash
                   (Optional)
                 </p>
               </p>
