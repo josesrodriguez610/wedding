@@ -62,8 +62,8 @@ const Page = () => {
             <p>
               But if you&apos;re stubborn and still want to give more, then you
               can contribute to our honeymoon fund here. We&apos;re going to
-              sunny London and we&apos;d love any tips or recommendations if you
-              have any.
+              Greece and we&apos;d love any tips or recommendations if you have
+              any.
             </p>
           </div>
         </div>
