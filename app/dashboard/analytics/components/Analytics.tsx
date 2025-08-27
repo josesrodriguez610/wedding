@@ -58,6 +58,7 @@ const Analytics = () => {
               <th className="py-3 px-4 text-left">Email</th>
               <th className="py-3 px-4 text-left">Going</th>
               <th className="py-3 px-4 text-left">PartyId</th>
+              <th className="py-3 px-4 text-left">Notes</th>
             </tr>
           </thead>
           <tbody className="text-black">
@@ -81,6 +82,7 @@ const Analytics = () => {
                       : "N/A"}
                   </td>
                   <td className="py-3 px-4">{user.partyId}</td>
+                  <td className="py-3 px-4">{user.notes || "—"}</td>
                 </tr>
               ))
             ) : (
