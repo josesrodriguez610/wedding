@@ -45,7 +45,11 @@ const WhatsGoingDown = () => {
               <h1>October 4, 2025</h1>
               <hr className="border-t-2 border-[#114734] my-2 w-full" />
               <p className="whats-data-title">
-                <strong>5:00 PM</strong> &nbsp;&nbsp; Wedding Ceremony
+                <strong>4:30 PM</strong> &nbsp;&nbsp; Arrivals
+              </p>
+              <hr className="border-t-2 border-[#114734] my-2 w-full" />
+              <p className="whats-data-title">
+                <strong>5:00 PM</strong> &nbsp;&nbsp; Ceremony Begins
               </p>
               <hr className="border-t-2 border-[#114734] my-2 w-full" />
               <p className="whats-data-title">
